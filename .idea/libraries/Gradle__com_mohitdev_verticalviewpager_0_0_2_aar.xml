@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.mohitdev:verticalviewpager:0.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7bb1d7864af7f988d414e0ef8bc13790/verticalviewpager-0.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7bb1d7864af7f988d414e0ef8bc13790/verticalviewpager-0.0.2/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mohitdev/verticalviewpager/0.0.2/62a37adf31f6be524304d25f14cbd12de26c22af/verticalviewpager-0.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mohitdev/verticalviewpager/0.0.2/60bc03df03eabee06960b6c2197dff99f9a57276/verticalviewpager-0.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
