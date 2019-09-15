@@ -11,7 +11,7 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_restaurant" />
 
-      <custom_font.MyTextView
+      <TextView
         android:id="@+id/signin"
           android:gravity="center"
         android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:textStyle="bold"/>
 
 
-        <custom_font.MyTextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -90,7 +90,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fb"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:orientation="horizontal">
@@ -119,7 +118,7 @@
         android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
-        <custom_font.MyTextView
+        <TextView
             android:id="@+id/txtDangki"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -128,7 +127,7 @@
             android:textColor="#2C3646"
             android:textSize="14dp" />
 
-        <custom_font.MyTextView
+        <TextView
             android:id="@+id/txtforget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
