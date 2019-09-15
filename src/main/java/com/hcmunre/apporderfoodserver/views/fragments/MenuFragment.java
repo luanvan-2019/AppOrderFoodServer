@@ -15,7 +15,7 @@ import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.views.adapters.TabFragmentAdapter;
 
 
-public class OrderFragment extends Fragment {
+public class MenuFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
     TabFragmentAdapter tabFragmentAdapter;

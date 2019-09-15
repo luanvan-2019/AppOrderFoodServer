@@ -56,57 +56,11 @@
             android:id="@+id/signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Đăng kí nhà hàng"
-            android:textColor="#00051f"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="Lấy lại mật khẩu"
+            android:textColor="#000000"
             android:textSize="20sp" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên quán"
-                android:textSize="15sp"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editSdt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Số điện thoại"
-                android:textSize="15sp"
-                android:inputType="phone" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên người dùng"
-                android:textSize="15sp"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -118,26 +72,9 @@
                 android:id="@+id/editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                android:textSize="15sp"
+                android:hint="Email của bạn"
+                android:textSize="13sp"
                 android:inputType="textEmailAddress" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editMatkhau"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mật khẩu"
-                android:textSize="15sp"
-                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,16 +84,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_button_shape"
             android:gravity="center"
-            android:textAllCaps="false"
             android:padding="14dp"
-            android:text="Đăng ký"
+            android:text="Gửi"
             android:textColor="#ffffff"
-            android:textSize="15dp"
+            android:textSize="13dp"
+            android:textAllCaps="false"
             android:textStyle="bold" />
 
-
     </LinearLayout>
-
-
 
 </RelativeLayout>

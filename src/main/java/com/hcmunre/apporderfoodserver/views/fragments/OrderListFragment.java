@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.models.Order;
-import com.hcmunre.apporderfoodserver.views.adapters.OrderListAdapter;
+import com.hcmunre.apporderfoodserver.models.RestaurantModel;
+import com.hcmunre.apporderfoodserver.views.adapters.RestaurantAdapter;
 
 import java.util.ArrayList;
 
@@ -22,32 +23,33 @@ public class OrderListFragment extends Fragment {
 
 
 
-            Integer foodimg1[] = {R.drawable.ic_eat,R.drawable.ic_eat,R.drawable.ic_eat,R.drawable.ic_eat,R.drawable.ic_eat};
-            String itemname[] = {"Đồ ăn đêm food Sài Gòn", "Âm thực miền tây", "Món ngon mỗi ngày", "Gái hầm thuốc bắc","Gấu hầm măng"};
-            String itemprice[] = {"$ 40.00", "$ 45.00", "$ 29.00", "$ 35.00", "$15.00"};
+    Integer mId[] = {123456,123456,123456,123456,123456};
+    String mName[] = {"Nguyễn Huu Trọng", "Nguyễn văn mạnh", "Hồ việt Trung", "Châu khải Phong","Jack"};
+    String mPrice[] = {"50.000đ", "45.000đ", "29.000đ", "35.000đ", "15.000đ"};
 
-            private ArrayList<Order> orderArrayList;
-            private RecyclerView recyclerView;
-            private OrderListAdapter orderListAdapter;
+    private ArrayList<RestaurantModel> restaurantModelArrayList;
+    private RecyclerView recyclerView;
+    private RestaurantAdapter restaurantAdapter;
 
-            @Nullable
-            @Override
-            public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-                View view = inflater.inflate(R.layout.fragment_allfood, container, false);
-
-                recyclerView = view.findViewById(R.id.recyclerview);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                orderArrayList = new ArrayList<>();
-                for (int i = 0; i < foodimg1.length; i++) {
-                    Order item = new Order(foodimg1[i], itemname[i], itemprice[i]);
-                    orderArrayList.add(item);
-                }
-                orderListAdapter = new OrderListAdapter(getActivity(), orderArrayList);
-                recyclerView.setAdapter(orderListAdapter);
-                return view;
-
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_allfood, container, false);
+        recyclerView=view.findViewById(R.id.recyclerview);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        restaurantModelArrayList =new ArrayList<>();
+        for (int i = 0; i < mId.length; i++) {
+            RestaurantModel item = new RestaurantModel(mId[i],mName[i],mPrice[i]);
+            restaurantModelArrayList.add(item);
         }
+        restaurantAdapter =new RestaurantAdapter(getActivity(), restaurantModelArrayList);
+        recyclerView.setAdapter(restaurantAdapter);
+
+        return view;
+
+
+    }
     }
 

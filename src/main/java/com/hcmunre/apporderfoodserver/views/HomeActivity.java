@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.views.fragments.AccountFragment;
 import com.hcmunre.apporderfoodserver.views.fragments.HomeFragment;
-import com.hcmunre.apporderfoodserver.views.fragments.OrderFragment;
+import com.hcmunre.apporderfoodserver.views.fragments.MenuFragment;
 import com.hcmunre.apporderfoodserver.views.fragments.ReportFragment;
 
 public class HomeActivity extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
 
                             break;
                         case R.id.nav_assignment:
-                            selectedFragment = new OrderFragment();
+                            selectedFragment = new MenuFragment();
                             break;
                         case R.id.nav_favorites:
                             selectedFragment = new ReportFragment();

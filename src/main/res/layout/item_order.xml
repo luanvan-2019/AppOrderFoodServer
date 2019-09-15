@@ -49,7 +49,7 @@
                                 android:text="#123456"/>
 
                             <custom_font.MyTextView
-                                android:id="@+id/txtname"
+                                android:id="@+id/txt_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="15sp"
@@ -63,7 +63,7 @@
                                 android:orientation="horizontal">
 
                                 <custom_font.MyTextView
-                                    android:id="@+id/Reviews_Id"
+                                    android:id="@+id/txt_price"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
@@ -90,7 +90,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"
                             android:textSize="15sp"
-                            android:textColor="#d22532"
+                            android:textColor="@color/colorPrimary"
+                            android:textAllCaps="false"
                             android:text="Nhận"/>
                         <Button
                             android:gravity="center"
@@ -100,6 +101,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"
                             android:textSize="15sp"
+                            android:textAllCaps="false"
                             android:textColor="#d22532"
                             android:text="Hủy"/>
 

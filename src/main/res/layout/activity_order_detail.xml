@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/txt_name"
+                android:id="@+id/txt_name_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nguyen Huu Trọng"
@@ -27,7 +27,7 @@
                 android:fontFamily="@font/robotoregular"
                 android:layout_marginBottom="10dp"/>
             <custom_font.MyTextView
-                android:id="@+id/txt_id_order"
+                android:id="@+id/txtid_order_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="#123456"
