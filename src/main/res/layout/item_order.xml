@@ -39,15 +39,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
-
-                            <custom_font.MyTextView
-                                android:id="@+id/txtid_order"
+                            <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="15sp"
-                                android:textColor="#262628"
-                                android:text="#123456"/>
-
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15sp"
+                                    android:textColor="#262628"
+                                    android:text="#"/>
+                                <custom_font.MyTextView
+                                    android:id="@+id/txtid_order"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15sp"
+                                    android:textColor="#262628"
+                                    android:text="123456"/>
+                            </LinearLayout>
                             <custom_font.MyTextView
                                 android:id="@+id/txt_name"
                                 android:layout_width="match_parent"

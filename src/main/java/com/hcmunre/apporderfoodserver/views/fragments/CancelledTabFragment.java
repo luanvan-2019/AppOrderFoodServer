@@ -19,7 +19,7 @@ import com.hcmunre.apporderfoodserver.views.adapters.RestaurantAdapter;
 
 import java.util.ArrayList;
 
-public class CancelledFragment extends Fragment {
+public class CancelledTabFragment extends Fragment {
 
 
 

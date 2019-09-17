@@ -12,41 +12,45 @@
         android:background="#3671a9">
 
         <LinearLayout
+            android:gravity="center_horizontal"
             android:id="@+id/layout_search"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_search_shape"
-            android:orientation="horizontal"
-            android:padding="12dp"
-            android:paddingRight="20dp">
-
-            <ImageView
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtadd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_search"
-                android:tint="#d0d0d0" />
+                android:text="+ Thêm mới"
+                android:textColor="@color/dark_blue"
+                android:fontFamily="@font/robotoregular"
+                android:textSize="13dp"
+                android:background="@drawable/round_button_light"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/txtCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loại món ăn"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:layout_marginLeft="16dp"
+                    android:background="@drawable/round_button_light"/>
+                <ImageView
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="88dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:tint="@color/dark_blue"
+                    android:src="@drawable/ic_keyboard_arrow_down"/>
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/txtsearch"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#ffffff"
-                android:hint="Tìm kiếm"
-                android:inputType="text"
-                android:maxLength="20"
-                android:paddingLeft="5dp"
-                android:paddingRight="15sp"
-                android:textSize="14.4sp" />
 
         </LinearLayout>
-        <ImageView
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/ic_notification"
-            android:layout_width="20dp"
-            android:layout_height="50dp" />
-
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:orientation="vertical"

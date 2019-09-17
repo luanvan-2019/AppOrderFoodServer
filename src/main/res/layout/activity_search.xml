@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             app:mt_searchIconTint="@color/colorGrey"
-            app:mt_hint="Nhập món ăn cần tìm"
+            app:mt_hint="Tìm kiếm đơn hàng"
             app:mt_searchBarColor="@color/white"/>
 
         <androidx.recyclerview.widget.RecyclerView

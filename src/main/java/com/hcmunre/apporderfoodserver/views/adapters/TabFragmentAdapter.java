@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.hcmunre.apporderfoodserver.views.fragments.ConfirmedFragment;
-import com.hcmunre.apporderfoodserver.views.fragments.OrderListFragment;
-import com.hcmunre.apporderfoodserver.views.fragments.CancelledFragment;
+import com.hcmunre.apporderfoodserver.views.fragments.ConfirmedTabFragment;
+import com.hcmunre.apporderfoodserver.views.fragments.OrderListTabFragment;
+import com.hcmunre.apporderfoodserver.views.fragments.CancelledTabFragment;
 
 public class TabFragmentAdapter extends FragmentStatePagerAdapter {
     int mNumofTabs;
@@ -20,16 +20,16 @@ public class TabFragmentAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                OrderListFragment orderListFragment = new OrderListFragment();
-                return orderListFragment;
+                OrderListTabFragment orderListTabFragment = new OrderListTabFragment();
+                return orderListTabFragment;
 
             case 1:
-                ConfirmedFragment confirmedFragment = new ConfirmedFragment();
-                return confirmedFragment;
+                ConfirmedTabFragment confirmedTabFragment = new ConfirmedTabFragment();
+                return confirmedTabFragment;
 
             case 2:
-                CancelledFragment cancelledFragment = new CancelledFragment();
-                return cancelledFragment;
+                CancelledTabFragment cancelledTabFragment = new CancelledTabFragment();
+                return cancelledTabFragment;
 
             default:
                 return null;

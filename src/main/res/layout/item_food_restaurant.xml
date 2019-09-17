@@ -48,16 +48,16 @@
 
 
         </LinearLayout>
-        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-            android:id="@+id/btn_quantity"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            app:backGroundColor="#f05421"
-            app:textColor="#ffffff"
-            app:finalNumber="20"
-            app:initialNumber="1"
-            app:textSize="8sp" />
+        <TextView
+            android:layout_marginRight="20dp"
+            android:id="@+id/txtadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Còn món"
+            android:textColor="@color/dark_blue"
+            android:fontFamily="@font/robotoregular"
+            android:textSize="13dp"
+            android:background="@drawable/round_button_light"/>
     </LinearLayout>
 
     <View

@@ -8,14 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.MenuFoodRestaurant;
 import com.hcmunre.apporderfoodserver.models.RestaurantModel;
-
+import com.hcmunre.apporderfoodserver.views.OrderDetailActivity;
 import java.util.ArrayList;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder> {
@@ -41,7 +38,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(mContext, MenuFoodRestaurant.class);
+                Intent intent=new Intent(mContext, OrderDetailActivity.class);
                 mContext.startActivity(intent);
             }
         });

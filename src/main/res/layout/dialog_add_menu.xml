@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border">
+    <ImageView
+        android:id="@+id/txt_close"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:text="Thêm loại món"
+            android:textSize="17sp"
+            android:layout_marginTop="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="#000000"
+            android:text="Loại món ăn"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:layout_below="@id/txt"
+            android:id="@+id/txtphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text=""
+            android:textColor="#000"
+            android:background="#f0f0f4"
+            android:padding="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawablePadding="16dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_button_shape"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:text="Thêm"
+            android:id="@+id/txt_add_menu"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

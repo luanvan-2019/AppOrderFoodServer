@@ -13,11 +13,20 @@ import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 import java.util.List;
 
 public class ProductAdapter extends ExpandableRecyclerViewAdapter<MenuFoodViewHolder,ProductViewHolder> {
+    List<? extends ExpandableGroup> grupo;
     public ProductAdapter(List<? extends ExpandableGroup> groups) {
         super(groups);
+        grupo=groups;
 
     }
+    public void expandAllGroups(){
 
+        for(int i = 0;i<grupo.size();i++){
+            if (!isGroupExpanded(grupo.get(i))) {
+                onGroupClick(expandableList.getFlattenedGroupIndex(i));
+            }
+        }
+    }
     @Override
     public MenuFoodViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext())

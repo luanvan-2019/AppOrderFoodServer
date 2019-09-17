@@ -55,6 +55,7 @@
             app:tabMode="fixed"
             app:tabGravity="fill"
             app:tabIndicatorColor="#d22532"
+            app:tabTextAppearance="@style/CustomTextAppearance"
             android:id="@+id/tablayout">
 <!--            <include layout="@layout/fragment_home2"/>-->
         </com.google.android.material.tabs.TabLayout>

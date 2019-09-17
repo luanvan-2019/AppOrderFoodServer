@@ -13,42 +13,36 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.Order;
-import com.hcmunre.apporderfoodserver.models.RestaurantModel;
-import com.hcmunre.apporderfoodserver.views.adapters.RestaurantAdapter;
+import com.hcmunre.apporderfoodserver.models.Report;
+import com.hcmunre.apporderfoodserver.views.adapters.ReportAdapter;
 
 import java.util.ArrayList;
 
-public class ConfirmedFragment extends Fragment {
+public class FoodReportFragment extends Fragment {
+    String mResName[] = {"Tý", "Sửu", "Dần", "Mẹo", "Thìn"};
+    String mTotalFood[] = {"10", "20", "30", "40", "50"};
+    String mTotalPrice[] = {"100.000đ", "200.000đ", "300.000đ", "400.000đ", "500.000đ"};
 
-
-    Integer mImage[] = {R.drawable.ic_eat, R.drawable.ic_eat, R.drawable.ic_eat, R.drawable.ic_eat, R.drawable.ic_eat};
-    String mName[] = {"Chân gà ngâm xả ớt", "Bún thịt nướng", "Bún chả cua", "Bloody Mary Meatballs", "Halloumi & Pepper Skewers"};
-    String mPrice[] = {"$ 50.00", "$ 45.00", "$ 29.00", "$ 35.00", "$15.00"};
-
-    private ArrayList<RestaurantModel> restaurantModelArrayList;
+    private ArrayList<Report> reports;
     private RecyclerView recyclerView;
-    private RestaurantAdapter restaurantAdapter;
-
+    private ReportAdapter reportAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_allfood, container, false);
-
         recyclerView = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        restaurantModelArrayList = new ArrayList<>();
-        for (int i = 0; i < mImage.length; i++) {
-            RestaurantModel item = new RestaurantModel(mImage[i], mName[i], mPrice[i]);
-            restaurantModelArrayList.add(item);
+        reports = new ArrayList<>();
+        for (int i = 0; i < mResName.length; i++) {
+            Report item = new Report(mResName[i], mTotalFood[i], mTotalPrice[i]);
+            reports.add(item);
         }
-        restaurantAdapter = new RestaurantAdapter(getActivity(), restaurantModelArrayList);
-        recyclerView.setAdapter(restaurantAdapter);
+        reportAdapter = new ReportAdapter(getActivity(), reports);
+        recyclerView.setAdapter(reportAdapter);
+
         return view;
     }
-
 }

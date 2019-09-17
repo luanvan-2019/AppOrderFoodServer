@@ -10,13 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.models.Food;
-import com.hcmunre.apporderfoodserver.views.MenuFoodActivity;
 
 import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder>{
     ArrayList<Food> arrayList;
-    public FoodAdapter(MenuFoodActivity detailFoodActivity, ArrayList<Food> arrayList) {
+    public FoodAdapter(ArrayList<Food> arrayList) {
         this.arrayList = arrayList;
 
     }

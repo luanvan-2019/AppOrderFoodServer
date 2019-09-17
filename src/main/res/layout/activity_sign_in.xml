@@ -74,6 +74,7 @@
             android:background="@drawable/background_button_shape"
             android:gravity="center"
             android:text="Đăng nhập"
+            android:textAllCaps="false"
             android:textSize="13sp"
             android:textColor="#ffffff"
             android:textStyle="bold"/>
@@ -102,6 +103,7 @@
                 android:gravity="center"
                 android:textSize="13sp"
                 android:text="Số điện thoại"
+                android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
 
