@@ -1,6 +1,7 @@
 package com.hcmunre.apporderfoodserver.views.fragments;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,47 +9,76 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.Food;
-import com.hcmunre.apporderfoodserver.models.MenuFoodRestaurant;
-import com.hcmunre.apporderfoodserver.views.adapters.ProductAdapter;
+import com.hcmunre.apporderfoodserver.commons.Common;
+import com.hcmunre.apporderfoodserver.models.Database.FoodData;
+import com.hcmunre.apporderfoodserver.models.entity.Food;
+import com.hcmunre.apporderfoodserver.models.entity.Menu;
+import com.hcmunre.apporderfoodserver.models.entity.Restaurant;
+import com.hcmunre.apporderfoodserver.views.adapters.MenuAdapter;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 public class MenuFragment extends Fragment {
-    RecyclerView recyclerView;
+    Unbinder unbinder;
+    @BindView(R.id.recyc_detailfood)
+    RecyclerView recyc_detailfood;
     ArrayList<Food> products;
+    ArrayList menuFoods;
     Dialog dialog;
-    FloatingActionButton mActionAddFood, mActionAddCate;
-    Integer mImage[] = {R.drawable.ic_eat, R.drawable.ic_eat, R.drawable.ic_eat, R.drawable.ic_eat, R.drawable.ic_eat};
-    String mName[] = {"Heo", "Boò", "Gà xối mở", "Gà ác hầm thuốc bắc", "Cá lóc kho tộ"};
-    String mPrice[] = {"$ 50.00", "$ 45.00", "$ 29.00", "$ 35.00", "$15.00"};
-
+    @BindView(R.id.action_add_food)
+    FloatingActionButton mActionAddFood;
+    @BindView(R.id.action_add_category)
+    FloatingActionButton mActionAddCate;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    @BindView(R.id.txtRestaurant)
+    TextView txtRestaurant;
+    @BindView(R.id.txtAddress)
+    TextView txtAddress;
+    @BindView(R.id.toolbar_layout)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.txtCountMenu)
+    TextView txtCountMenu;
+    MenuAdapter menuAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu_food,
                 container, false);
-        recyclerView = view.findViewById(R.id.recyc_detailfood);
-        mActionAddFood = view.findViewById(R.id.action_add_food);
-        mActionAddCate = view.findViewById(R.id.action_add_category);
+        unbinder = ButterKnife.bind(this, view);
+        init();
+        getInforRestaurant();
+
+        return view;
+    }
+
+    private void init() {
         mActionAddFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,35 +91,10 @@ public class MenuFragment extends Fragment {
                 openDialogAddMenu();
             }
         });
-        //test
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        ArrayList<MenuFoodRestaurant> companies = new ArrayList<>();
-        products = new ArrayList<>();
-        for (int i = 0; i < mImage.length; i++) {
-            Food item = new Food(mName[i], mPrice[i], mImage[i]);
-            products.add(item);
-        }
-        MenuFoodRestaurant birds = new MenuFoodRestaurant("Món động vật", products);
-        companies.add(birds);
-        final ProductAdapter adapter = new ProductAdapter(companies);
-        //luôn luôn show item trong menu
-        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(
-                new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                        adapter.expandAllGroups();
-                    }
-                }
-        );
-        recyclerView.setAdapter(adapter);
-
-        //test
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        recyc_detailfood.setLayoutManager(layoutManager);
+        recyc_detailfood.setItemAnimator(new DefaultItemAnimator());
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,26 +102,7 @@ public class MenuFragment extends Fragment {
                         .setAction("Action", null).show();
             }
         });
-//        txtAdd=view.findViewById(R.id.txtadd);
-//        txtCategory=view.findViewById(R.id.txtCategory);
-//        tabLayout=view.findViewById(R.id.tab_order);
-//        viewPager=view.findViewById(R.id.viewpager_order);
-//        txtAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                txtAdd.setBackgroundResource(R.drawable.round_button);
-//                txtCategory.setBackgroundResource(R.drawable.round_button_light);
-//            }
-//        });
-//        txtCategory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                txtCategory.setBackgroundResource(R.drawable.round_button);
-//                txtAdd.setBackgroundResource(R.drawable.round_button_light);
-//            }
-//        });
-//        listOrder();
-        return view;
+        getMenuFood();
     }
 
     private void openDialogAddFood() {
@@ -174,5 +160,24 @@ public class MenuFragment extends Fragment {
                 dialog.dismiss();
             }
         });
+    }
+
+    private void getInforRestaurant() {
+        Intent intent = getActivity().getIntent();
+        Restaurant restaurant = (Restaurant) intent.getSerializableExtra(Common.KEY_RESTAURANT);
+        txtRestaurant.setText(restaurant.getmName());
+        txtAddress.setText(restaurant.getAddress());
+        collapsingToolbarLayout.setTitle(restaurant.getmName());
+    }
+    private void getMenuFood() {
+        Intent intent = getActivity().getIntent();
+        Restaurant restaurant = (Restaurant) intent.getSerializableExtra(Common.KEY_RESTAURANT);
+        ArrayList<Menu> listMenu;
+        FoodData foodData = new FoodData();
+        listMenu = foodData.getMenuResFood(restaurant.getmId());
+        menuAdapter = new MenuAdapter(getActivity(), listMenu);
+        txtCountMenu.setText(menuAdapter.getItemCount() + "");
+        recyc_detailfood.setAdapter(menuAdapter);
+        menuAdapter.notifyDataSetChanged();
     }
 }

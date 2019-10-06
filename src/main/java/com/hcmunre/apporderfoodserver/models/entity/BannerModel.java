@@ -1,4 +1,4 @@
-package com.hcmunre.apporderfoodserver.models;
+package com.hcmunre.apporderfoodserver.models.entity;
 
 public class BannerModel {
     private int id;

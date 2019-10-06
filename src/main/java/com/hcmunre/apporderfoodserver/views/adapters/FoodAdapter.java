@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hcmunre.apporderfoodserver.models.Food;
+import com.hcmunre.apporderfoodserver.models.entity.Food;
 
 import java.util.ArrayList;
 

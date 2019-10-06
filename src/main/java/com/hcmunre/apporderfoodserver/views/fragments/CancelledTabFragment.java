@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.Order;
-import com.hcmunre.apporderfoodserver.models.RestaurantModel;
+import com.hcmunre.apporderfoodserver.models.entity.Restaurant;
 import com.hcmunre.apporderfoodserver.views.adapters.RestaurantAdapter;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class CancelledTabFragment extends Fragment {
     String mName[] = {"Heo", "Boò", "Gà xối mở", "Gà ác hầm thuốc bắc", "Cá lóc kho tộ"};
     String mPrice[] = {"$ 50.00", "$ 45.00", "$ 29.00", "$ 35.00", "$15.00"};
 
-    private ArrayList<RestaurantModel> restaurantModelArrayList;
+    private ArrayList<Restaurant> restaurantArrayList;
     private RecyclerView recyclerView;
     private RestaurantAdapter restaurantAdapter;
 
@@ -43,12 +42,12 @@ public class CancelledTabFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        restaurantModelArrayList =new ArrayList<>();
+        restaurantArrayList =new ArrayList<>();
         for (int i = 0; i < mImage.length; i++) {
-            RestaurantModel item = new RestaurantModel(mImage[i],mName[i],mPrice[i]);
-            restaurantModelArrayList.add(item);
+            Restaurant item = new Restaurant(mImage[i],mName[i],mPrice[i]);
+            restaurantArrayList.add(item);
         }
-        restaurantAdapter =new RestaurantAdapter(getActivity(), restaurantModelArrayList);
+        restaurantAdapter =new RestaurantAdapter(getActivity(), restaurantArrayList);
         recyclerView.setAdapter(restaurantAdapter);
         return view;
 

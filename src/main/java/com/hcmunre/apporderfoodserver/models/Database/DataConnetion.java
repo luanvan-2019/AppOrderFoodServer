@@ -14,10 +14,16 @@ public class DataConnetion {
     public Connection connectionData()
     {
 
-        ip = "115.84.182.60";
+//        ip = "115.84.182.60";
+//        db = "hcmunrec_appfood";
+//        DBUsername = "huutrong";
+//        DBPassword = "Luanvan2019@";
+
+        ip = "192.168.43.138";
         db = "hcmunrec_appfood";
-        DBUsername = "huutrong";
-        DBPassword = "Luanvan2019@";
+        DBUsername = "sa";
+        DBPassword = "123456789";
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Connection connection = null;

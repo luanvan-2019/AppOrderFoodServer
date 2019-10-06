@@ -13,11 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.Food;
-import com.hcmunre.apporderfoodserver.models.Report;
-import com.hcmunre.apporderfoodserver.models.RestaurantModel;
+import com.hcmunre.apporderfoodserver.models.entity.Report;
 import com.hcmunre.apporderfoodserver.views.adapters.ReportAdapter;
-import com.hcmunre.apporderfoodserver.views.adapters.RestaurantAdapter;
 
 import java.util.ArrayList;
 

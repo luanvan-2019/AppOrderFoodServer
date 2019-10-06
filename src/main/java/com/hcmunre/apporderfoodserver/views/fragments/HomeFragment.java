@@ -15,12 +15,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.BannerModel;
 import com.hcmunre.apporderfoodserver.views.SearchActivity;
 import com.hcmunre.apporderfoodserver.views.adapters.TabFragmentAdapter;
-
-import java.util.ArrayList;
-import java.util.Timer;
 
 public class HomeFragment extends Fragment {
     LinearLayout layout_search;
@@ -28,12 +24,6 @@ public class HomeFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager,bannerslider;
     TabFragmentAdapter tabFragmentAdapter;
-//    int currentpage=2;
-//    private Timer timer;
-//    final private long DELAY_TIME=2000;
-//    final private long PERIOD_TIME=2000;
-//    private ArrayList<BannerModel> mBannerModels;
-//    SliderLayout sliderLayout;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,53 +33,7 @@ public class HomeFragment extends Fragment {
         txtsearch=rootView.findViewById(R.id.txtsearch);
         tabLayout=rootView.findViewById(R.id.tablayout);
         viewPager=rootView.findViewById(R.id.viewpager);
-
-        ////banner slider
-//        bannerslider=rootView.findViewById(R.id.viewpager_slider);
-//        mBannerModels=new ArrayList<BannerModel>();
-//        mBannerModels.add(new BannerModel(1,R.drawable.ic_eat));
-//        mBannerModels.add(new BannerModel(1,R.drawable.ic_eat));
-//        mBannerModels.add(new BannerModel(1,R.drawable.ic_eat));
-//        mBannerModels.add(new BannerModel(1,R.drawable.ic_eat));
-//        BannerAdapter bannerAdapter=new BannerAdapter(mBannerModels);
-//        bannerslider.setAdapter(bannerAdapter);
-//        bannerslider.setClipToPadding(false);
-//        bannerslider.setPageMargin(10);
-//        ViewPager.OnPageChangeListener onPageChangeListener=new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                currentpage=position;
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//                if(state==ViewPager.SCROLL_STATE_IDLE){
-//                    pageLooper();
-//                }
-//            }
-//        };
-//        bannerslider.addOnPageChangeListener(onPageChangeListener);
-//        startBannerSlideShow();
-//        bannerslider.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                pageLooper();
-//                stopBannerSlideShow();
-//                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
-//                    startBannerSlideShow();
-//                }
-//                return false;
-//            }
-//        });
-
-        ///banner slider
         listMenu();
-
         layout_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,37 +84,5 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-//    private void pageLooper(){
-//        if(currentpage==mBannerModels.size()-2){
-//            currentpage=2;
-//            bannerslider.setCurrentItem(currentpage,false);
-//        }
-//        if(currentpage==1){
-//            currentpage=mBannerModels.size()-3;
-//            bannerslider.setCurrentItem(currentpage,false);
-//        }
-//    }
-//    private void startBannerSlideShow(){
-//        final Handler handler=new Handler();
-//        final Runnable runnable=new Runnable() {
-//            @Override
-//            public void run() {
-//                if(currentpage>=mBannerModels.size()){
-//                    currentpage=1;
-//                }
-//                bannerslider.setCurrentItem(currentpage++,true);
-//            }
-//        };
-//        timer=new Timer();
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(runnable);
-//            }
-//        },DELAY_TIME,PERIOD_TIME);
-//    }
-//    private void stopBannerSlideShow(){
-//        timer.cancel();
-//    }
 
 }

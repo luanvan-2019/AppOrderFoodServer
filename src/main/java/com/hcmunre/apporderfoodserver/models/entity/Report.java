@@ -1,4 +1,4 @@
-package com.hcmunre.apporderfoodserver.models;
+package com.hcmunre.apporderfoodserver.models.entity;
 
 public class Report {
     private String mResName;

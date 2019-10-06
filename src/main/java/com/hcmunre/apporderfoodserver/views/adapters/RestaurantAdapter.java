@@ -11,13 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.RestaurantModel;
+import com.hcmunre.apporderfoodserver.models.entity.Restaurant;
 import com.hcmunre.apporderfoodserver.views.OrderDetailActivity;
 import java.util.ArrayList;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder> {
     private Context mContext;
-    private ArrayList<RestaurantModel> restaurantModelArrayList;
+    private ArrayList<Restaurant> restaurantArrayList;
 
 
     @NonNull
@@ -30,7 +30,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantAdapter.ViewHolder holder, int position) {
-        RestaurantModel arraylists = restaurantModelArrayList.get(position);
+        Restaurant arraylists = restaurantArrayList.get(position);
 
         holder.mName.setText(arraylists.getmName());
         holder.mPrice.setText(arraylists.getmPrice());
@@ -47,7 +47,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return restaurantModelArrayList.size();
+        return restaurantArrayList.size();
     }
 
 
@@ -65,8 +65,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         }
     }
 
-    public RestaurantAdapter(Context mainActivityContacts, ArrayList<RestaurantModel> restaurantModelArrayList) {
-        this.restaurantModelArrayList = restaurantModelArrayList;
+    public RestaurantAdapter(Context mainActivityContacts, ArrayList<Restaurant> restaurantArrayList) {
+        this.restaurantArrayList = restaurantArrayList;
         this.mContext = mainActivityContacts;
     }
 

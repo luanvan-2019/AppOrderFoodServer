@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.rahimlis:badgedtablayout:v1.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/07cb126091dec2034d780047fe031ead/jetified-badgedtablayout-v1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/07cb126091dec2034d780047fe031ead/jetified-badgedtablayout-v1.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.rahimlis/badgedtablayout/v1.2/a3653a38f0a1410957e87c13f451d710885583dc/badgedtablayout-v1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

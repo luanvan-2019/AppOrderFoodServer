@@ -16,7 +16,7 @@
         android:id="@+id/txtSaigonfood"
         android:textStyle="bold"
         android:gravity="center"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cửa hàng"
