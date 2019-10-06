@@ -17,7 +17,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_centerHorizontal="true"
-            android:id="@+id/txt"
+            android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,8 +36,8 @@
             android:layout_marginTop="10dp"
             />
         <EditText
-            android:layout_below="@id/txt"
-            android:id="@+id/txtphone"
+            android:layout_below="@id/txtTitle"
+            android:id="@+id/editCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -57,7 +57,7 @@
             android:textColor="#ffffff"
             android:textAllCaps="false"
             android:text="Thêm"
-            android:id="@+id/txt_add_menu"
+            android:id="@+id/btnAđdMenu"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp" />

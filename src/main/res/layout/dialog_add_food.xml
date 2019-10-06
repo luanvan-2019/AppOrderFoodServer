@@ -56,7 +56,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp" />
         <EditText
-            android:id="@+id/txtphone"
+            android:id="@+id/txtprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/txtcatege_food"
+                android:id="@+id/txtcategory_food"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -140,12 +140,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/imageFood"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_eat"/>
             <Button
+                android:id="@+id/btnSelectImage"
                 android:textAllCaps="false"
                 android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"

@@ -1,6 +1,8 @@
 package com.hcmunre.apporderfoodserver.views.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
+import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.entity.Menu;
+import com.hcmunre.apporderfoodserver.views.activities.ListFoodActivity;
 
 import java.util.ArrayList;
 
@@ -38,16 +42,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position) {
         final Menu menu=listMenus.get(position);
-        holder.imageMenu.setImageResource(menu.getmImage());
+        holder.imageMenu.setImageResource(menu.getRestaurantId());
         holder.txtNameMenu.setText(menu.getmName());
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(mContext, ListFoodActivity.class);
-//                intent.putExtra("dataMenu",menu);
-//                mContext.startActivity(intent);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(mContext, ListFoodActivity.class);
+                intent.putExtra(Common.KEY_MENU,menu);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -55,7 +59,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         return listMenus.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void addItem(int position, Menu menu)
+    {
+        listMenus.add(position, menu);
+        notifyItemInserted(position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         @BindView(R.id.imageMenu)
         ImageView imageMenu;
         @BindView(R.id.txtNameMenu)
@@ -63,6 +73,15 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         public ViewHolder(@NonNull View view) {
             super(view);
            ButterKnife.bind(this,view);
+           view.setOnCreateContextMenuListener(this);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.setHeaderTitle("Chọn");
+            contextMenu.add(0,0,getAdapterPosition(),Common.UPDATE);
+            contextMenu.add(0,1,getAdapterPosition(),Common.DELETE);
         }
     }
+
 }

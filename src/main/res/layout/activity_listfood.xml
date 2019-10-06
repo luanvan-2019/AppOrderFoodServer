@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"/>
+        <TextView
+            android:id="@+id/txtNameMenuRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAllCaps="true"
+            android:text="Gà"
+            android:textSize="15sp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/toolbar"
+        android:id="@+id/recyc_listFood"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:fab_addButtonColorNormal="@color/colorPrimary"
+            app:fab_addButtonColorPressed="@color/colorPrimary"
+            app:fab_addButtonPlusIconColor="@color/white"
+            app:fab_labelStyle="@style/menu_labels_style">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/dark_blue"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_add"
+                android:id="@+id/action_add_food"
+                app:fab_title="Thêm món mới"/>
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_add"
+                android:id="@+id/action_add_category"
+                app:fab_title="Thêm loại mới"/>
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </FrameLayout>
+
+</RelativeLayout>

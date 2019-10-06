@@ -15,7 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.views.SearchActivity;
+import com.hcmunre.apporderfoodserver.views.activities.SearchActivity;
 import com.hcmunre.apporderfoodserver.views.adapters.TabFragmentAdapter;
 
 public class HomeFragment extends Fragment {

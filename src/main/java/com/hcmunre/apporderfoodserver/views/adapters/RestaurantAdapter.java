@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.models.entity.Restaurant;
-import com.hcmunre.apporderfoodserver.views.OrderDetailActivity;
+import com.hcmunre.apporderfoodserver.views.activities.OrderDetailActivity;
 import java.util.ArrayList;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder> {

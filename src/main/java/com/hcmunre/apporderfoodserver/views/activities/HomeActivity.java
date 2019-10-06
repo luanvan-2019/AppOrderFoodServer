@@ -1,4 +1,4 @@
-package com.hcmunre.apporderfoodserver.views;
+package com.hcmunre.apporderfoodserver.views.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;

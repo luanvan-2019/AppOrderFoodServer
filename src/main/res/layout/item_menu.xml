@@ -27,6 +27,7 @@
                 />
             <TextView
                 android:text="Gà"
+                android:textAllCaps="true"
                 android:gravity="center"
                 android:id="@+id/txtNameMenu"
                 android:layout_marginBottom="10dp"

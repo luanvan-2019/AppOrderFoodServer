@@ -8,4 +8,7 @@ public class Common {
     public static RestaurantOwner currentRestaurantOwner;
     public static String ID_USER = "";
     public static String KEY_RESTAURANT="data_restaurant";
+    public static String KEY_MENU="data_menu";
+    public static final String UPDATE = "Cập nhật";
+    public static final String DELETE = "Xóa";
 }

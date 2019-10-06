@@ -14,24 +14,24 @@ public class FoodData {
     DataConnetion dataConnetion =new DataConnetion();
     PreparedStatement pst;
     ResultSet rs;
-    public ArrayList<Food> getAllFood(){
-        ArrayList<Food> foods = new ArrayList<>();//tạo mảng đề lưu food
-        try {
-            String sql="EXEC Sp_SelectFood";
-            con =dataConnetion.connectionData();
-            pst= con.prepareStatement(sql);
-            rs=pst.executeQuery();
-            Food food;
-            while(rs.next()){
-                food=new Food(rs.getString("Name"),rs.getInt("Image"),rs.getFloat("Price"));
-                foods.add(food);
-            }
-            con.close();
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return foods;
-    }
+//    public ArrayList<Food> getAllFood(){
+//        ArrayList<Food> foods = new ArrayList<>();//tạo mảng đề lưu food
+//        try {
+//            String sql="EXEC Sp_SelectFood";
+//            con =dataConnetion.connectionData();
+//            pst= con.prepareStatement(sql);
+//            rs=pst.executeQuery();
+//            Food food;
+//            while(rs.next()){
+//                food=new Food(rs.getString("Name"),rs.getInt("Image"),rs.getFloat("Price"));
+//                foods.add(food);
+//            }
+//            con.close();
+//        }catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return foods;
+//    }
     public  ArrayList getMenuFood(){
         ArrayList arrayList=new ArrayList();
         try {
@@ -67,6 +67,21 @@ public class FoodData {
             e.printStackTrace();
         }
         return listMenuFood;
+    }
+    public ArrayList<Food> getFoodOfMenu(int menuId) throws SQLException {
+        ArrayList<Food> listFoodOfMenu=new ArrayList<>();
+        String sql="Exec Sp_SelectFood '"+menuId+"'";
+        con=dataConnetion.connectionData();
+        pst=con.prepareStatement(sql);
+        rs=pst.executeQuery();
+        Food food;
+        while(rs.next()){
+            food=new Food();
+            food.setName(rs.getString("Name"));
+            food.setPrice(rs.getFloat("Price"));
+            listFoodOfMenu.add(food);
+        }
+        return listFoodOfMenu;
     }
 
 }

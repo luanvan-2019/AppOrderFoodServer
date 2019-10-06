@@ -5,15 +5,15 @@ import java.io.Serializable;
 public class Menu implements Serializable {
     private int mId;
     private String mName;
-    private int mImage;
+    private int restaurantId;
 
     public Menu() {
     }
 
-    public Menu(int mId, String mName, int mImage) {
+    public Menu(int mId, String mName, int restaurantId) {
         this.mId = mId;
         this.mName = mName;
-        this.mImage = mImage;
+        this.restaurantId = restaurantId;
     }
 
     public int getmId() {
@@ -32,11 +32,11 @@ public class Menu implements Serializable {
         this.mName = mName;
     }
 
-    public int getmImage() {
-        return mImage;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setmImage(int mImage) {
-        this.mImage = mImage;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }

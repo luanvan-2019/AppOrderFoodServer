@@ -1,4 +1,4 @@
-package com.hcmunre.apporderfoodserver.views;
+package com.hcmunre.apporderfoodserver.views.activities;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;

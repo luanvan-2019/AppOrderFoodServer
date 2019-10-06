@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".views.SplashScreenActivity"
+        <activity android:name=".views.activities.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,12 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.HomeActivity"/>
-        <activity android:name=".views.OrderDetailActivity"/>
-        <activity android:name=".views.SearchActivity"/>
-        <activity android:name=".views.ForgetPassActivity"/>
-        <activity android:name=".views.SignUpActivity"/>
-        <activity android:name=".views.SignInActivity"/>
+        <activity android:name=".views.activities.HomeActivity"/>
+        <activity android:name=".views.activities.OrderDetailActivity"/>
+        <activity android:name=".views.activities.SearchActivity"/>
+        <activity android:name=".views.activities.ForgetPassActivity"/>
+        <activity android:name=".views.activities.SignUpActivity"/>
+        <activity android:name=".views.activities.SignInActivity"/>
+        <activity android:name=".views.activities.ListFoodActivity"/>
     </application>
     <dist:module dist:instant="true" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
