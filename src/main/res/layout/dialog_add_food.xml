@@ -36,7 +36,7 @@
             android:id="@+id/txtname_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:text=""
             android:textColor="#000"
             android:background="#f0f0f4"
@@ -59,7 +59,7 @@
             android:id="@+id/txtprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:text=""
             android:textColor="#000"
             android:background="#f0f0f4"
@@ -74,49 +74,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textColor="#000000"
-            android:text="Loại món ăn"
-            android:textSize="15sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp" />
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/txtcategory_food"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text=""
-                android:textColor="#000"
-                android:background="#f0f0f4"
-                android:padding="12dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:drawablePadding="16dp"/>
-            <ImageView
-                android:layout_marginRight="20dp"
-                android:layout_gravity="right|center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_keyboard_arrow_down"/>
-        </FrameLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:textColor="#000000"
             android:text="Mô tả"
             android:textSize="15sp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginTop="10dp"/>
         <EditText
             android:id="@+id/txtdescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:text=""
             android:textColor="#000"
             android:background="#f0f0f4"
@@ -157,6 +123,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnAddFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button_shape"

@@ -88,8 +88,8 @@ public class SignInActivity extends AppCompatActivity {
         private Context mContext = null;
 
         public CheckLogin(Context context) {
-            mContext = context;
-        }
+        mContext = context;
+    }
 
         String z = "";
         boolean isSuccess = false;

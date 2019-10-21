@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppOrderFoodServer</string>
+    <string name="map_key" translatable="false">AIzaSyCoc1jHvB0Uhk8efsInB60-Fprg_qCIJNU</string>
 </resources>

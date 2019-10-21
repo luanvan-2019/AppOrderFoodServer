@@ -60,7 +60,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
             mId = view.findViewById(R.id.txtid_order);
             mPrice = view.findViewById(R.id.txt_price);
-            mName = view.findViewById(R.id.txt_name);
+            mName = view.findViewById(R.id.edit_name);
             parentLayout=view.findViewById(R.id.parent_layout);
         }
     }

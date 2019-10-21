@@ -12,35 +12,50 @@ import java.sql.SQLException;
 
 public class MenuData {
     Connection con;
-    DataConnetion dataConnetion=new DataConnetion();
+    DataConnetion dataConnetion = new DataConnetion();
     PreparedStatement pst;
     ResultSet rs;
     CallableStatement callable;
-    public int insertMenuRes(Menu menu){
-        int res=0;
+
+    public MenuData() {
+        con = dataConnetion.connectionData();
+    }
+
+    public int insertMenuRes(Menu menu) {
+        int res = 0;
         try {
             String sql = "{call Sp_InsertMenuRes (?,?)}";
-            con = dataConnetion.connectionData();
             callable = con.prepareCall(sql);
             callable.setString(1, menu.getmName());
             callable.setInt(2, menu.getRestaurantId());
             res = callable.executeUpdate();
             con.close();
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-            Log.w("Lỗi Kết nối","" + e.getMessage());
+            Log.w("Lỗi Kết nối", "" + e.getMessage());
         }
         return res;
     }
-    public String deleteMenuRes(String indexDelete) {
+
+    public void deleteMenuRes(int indexDelete) {
         try {
-            String sql = "DELETE FROM Menu WHERE Id='"+indexDelete+"'";
-            con = dataConnetion.connectionData();
-            pst=con.prepareStatement(sql);
+            String sql = "Exec Sp_DeleteMenu '" + indexDelete + "'";
+            pst = con.prepareStatement(sql);
             pst.executeQuery();
             con.close();
         } catch (Exception e) {
         }
-        return null;
+    }
+
+    public void updateMenu(Menu menu) {
+        try {
+            String sql = "Exec Sp_UpdateMenu '" + menu.getmId() + "'," +
+                    "'" + menu.getmName().toString() + "','" + menu.getRestaurantId() + "'";
+            pst = con.prepareStatement(sql);
+            pst.executeQuery();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -12,15 +12,13 @@ public class SignInData {
     Connection con;
     DataConnetion dataCon = new DataConnetion();
     String z = "";
-    int id;
-//    boolean isSuccess=false;
     public String login(RestaurantOwner restaurantOwner) {
         try {
             con = dataCon.connectionData();
             if (con == null) {
                 z = "Vui lòng kiểm tra kết nối";
             } else {
-                String query = "Exec Sp_SelectRestaurantLoginBackup '" + restaurantOwner.getEmail().toString() + "','" + restaurantOwner.getPassword().toString() + "'";
+                String query = "Exec Sp_SelectRestaurantLogin '" + restaurantOwner.getEmail().toString() + "','" + restaurantOwner.getPassword().toString() + "'";
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 if (rs.next()) {
@@ -28,6 +26,12 @@ public class SignInData {
                     Common.currentRestaurant.setmId(rs.getInt("Id"));
                     Common.currentRestaurant.setmName(rs.getString("Name"));
                     Common.currentRestaurant.setAddress(rs.getString("Address"));
+                    Common.currentRestaurantOwner=new RestaurantOwner();
+                    Common.currentRestaurantOwner.setName(rs.getString("NameOwner"));
+                    Common.currentRestaurantOwner.setAddress(rs.getString("AddressOwner"));
+                    Common.currentRestaurantOwner.setPhone(rs.getString("PhoneOwner"));
+                    Common.currentRestaurant.setImage(rs.getString("ImageOwner"));
+                    Common.currentRestaurantOwner.setEmail(rs.getString("Email"));
                     z = "success";
                     con.close();
                 } else {

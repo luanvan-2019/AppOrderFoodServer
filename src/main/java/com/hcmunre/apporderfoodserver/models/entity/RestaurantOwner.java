@@ -3,7 +3,7 @@ package com.hcmunre.apporderfoodserver.models.entity;
 public class RestaurantOwner {
     private int id;
     private int restaurantId;
-    private String name,phone,email,password;
+    private String name,address,phone,email,password;
     private boolean status;
     public RestaurantOwner(){
     }
@@ -72,5 +72,13 @@ public class RestaurantOwner {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -1,48 +1,24 @@
 package com.hcmunre.apporderfoodserver.models.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+public class Food {
+    private int id;
+    private String name;
+    private  String imageFood;
+    private String Description;
+    private Float price;
+    private int menuId;
 
-public class Food implements Parcelable {
-    public int id;
-    public String name;
-    public Float price;
-    public String nameMenu;
-    public  int imageFood;
-    private int quantity = 0;
-    private String priceAsPerQuantity;
     public Food(){
 
     }
 
-    public Food(String name, Float price, String nameMenu) {
+    public Food(int id, String name, String imageFood, String description, Float price, int menuId) {
+        this.id = id;
         this.name = name;
+        this.imageFood = imageFood;
+        Description = description;
         this.price = price;
-        this.nameMenu = nameMenu;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getPriceAsPerQuantity() {
-        return priceAsPerQuantity;
-    }
-
-    public void setPriceAsPerQuantity(String priceAsPerQuantity) {
-        this.priceAsPerQuantity = priceAsPerQuantity;
-    }
-
-    public String getNameMenu() {
-        return nameMenu;
-    }
-
-    public void setNameMenu(String nameMenu) {
-        this.nameMenu = nameMenu;
+        this.menuId = menuId;
     }
 
     public int getId() {
@@ -61,6 +37,22 @@ public class Food implements Parcelable {
         this.name = name;
     }
 
+    public String getImageFood() {
+        return imageFood;
+    }
+
+    public void setImageFood(String imageFood) {
+        this.imageFood = imageFood;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
     public Float getPrice() {
         return price;
     }
@@ -69,59 +61,11 @@ public class Food implements Parcelable {
         this.price = price;
     }
 
-    public int getImageFood() {
-        return imageFood;
+    public int getMenuId() {
+        return menuId;
     }
 
-    public void setImageFood(int imageFood) {
-        this.imageFood = imageFood;
+    public void setMenuId(int menuId) {
+        this.menuId = menuId;
     }
-
-    public Food(int id, String name, Float price, int imageFood) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.imageFood = imageFood;
-    }
-
-    protected Food(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        if (in.readByte() == 0) {
-            price = null;
-        } else {
-            price = in.readFloat();
-        }
-        imageFood = in.readInt();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(name);
-        if (price == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeFloat(price);
-        }
-        dest.writeInt(imageFood);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<Food> CREATOR = new Creator<Food>() {
-        @Override
-        public Food createFromParcel(Parcel in) {
-            return new Food(in);
-        }
-
-        @Override
-        public Food[] newArray(int size) {
-            return new Food[size];
-        }
-    };
 }

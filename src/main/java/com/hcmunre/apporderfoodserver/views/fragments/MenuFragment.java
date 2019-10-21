@@ -1,17 +1,12 @@
 package com.hcmunre.apporderfoodserver.views.fragments;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +31,6 @@ import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.Database.FoodData;
 import com.hcmunre.apporderfoodserver.models.Database.MenuData;
-import com.hcmunre.apporderfoodserver.models.entity.Food;
 import com.hcmunre.apporderfoodserver.models.entity.Menu;
 import com.hcmunre.apporderfoodserver.models.entity.Restaurant;
 import com.hcmunre.apporderfoodserver.views.adapters.MenuAdapter;
@@ -46,15 +40,16 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class MenuFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.recyc_detailfood)
     RecyclerView recyc_detailfood;
-    ArrayList<Food> products;
-    ArrayList menuFoods;
-    Dialog dialog;
     @BindView(R.id.action_add_food)
     FloatingActionButton mActionAddFood;
     @BindView(R.id.action_add_category)
@@ -72,7 +67,7 @@ public class MenuFragment extends Fragment {
     @BindView(R.id.txtCountMenu)
     TextView txtCountMenu;
     MenuAdapter menuAdapter;
-
+    CompositeDisposable compositeDisposable=new CompositeDisposable();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,36 +75,21 @@ public class MenuFragment extends Fragment {
                 container, false);
         unbinder = ButterKnife.bind(this, view);
         init();
-        getInforRestaurant();
-
         return view;
     }
 
     private void init() {
-        mActionAddFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialogAddFood();
-            }
-        });
-        mActionAddCate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialogAddMenu();
-            }
-        });
+        mActionAddFood.setOnClickListener(view -> openDialogAddFood());
+        mActionAddCate.setOnClickListener(view -> openDialogAddMenu());
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         recyc_detailfood.setLayoutManager(layoutManager);
         recyc_detailfood.setItemAnimator(new DefaultItemAnimator());
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Đã lưu", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Đã lưu", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
         getMenuFood();
+        getInforRestaurant();
+
     }
 
     private void openDialogAddFood() {
@@ -125,22 +105,15 @@ public class MenuFragment extends Fragment {
         ImageView mClose = dialog.findViewById(R.id.txt_close);
         EditText txtname_food = dialog.findViewById(R.id.txtname_food);
         EditText txtprice = dialog.findViewById(R.id.txtprice);
-        EditText txtcategory_food = dialog.findViewById(R.id.txtcategory_food);
         EditText txtdescription = dialog.findViewById(R.id.txtdescription);
         ImageView imageFood = dialog.findViewById(R.id.imageFood);
         Button btnSelectImage = dialog.findViewById(R.id.btnSelectImage);
-        mClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        mClose.setOnClickListener(view -> dialog.dismiss());
     }
 
     private void openDialogAddMenu() {
         Intent intent = getActivity().getIntent();
         final Restaurant restaurant = (Restaurant) intent.getSerializableExtra(Common.KEY_RESTAURANT);
-        //
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.CustomDialogAnimation);
         LayoutInflater inflater = this.getLayoutInflater();
         View add_menu = inflater.inflate(R.layout.dialog_add_menu, null);
@@ -151,39 +124,36 @@ public class MenuFragment extends Fragment {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, 700);
         ImageView mClose = dialog.findViewById(R.id.txt_close);
-        final EditText editCategory = dialog.findViewById(R.id.editCategory);
-        Button btnAđdMenu=dialog.findViewById(R.id.btnAđdMenu);
-        btnAđdMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MenuData menuData=new MenuData();
-                Menu menu=new Menu();
-                menu.setmName(editCategory.getText().toString());
-                menu.setRestaurantId(restaurant.getmId());
-                if(editCategory.getText().toString().equals("")){
-                    Toast.makeText(getActivity(), "Vui lòng nhập thông tin", Toast.LENGTH_SHORT).show();
-                }else {
-                    int res=menuData.insertMenuRes(menu);
-                    if(res>0){
-                        Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        menuAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }else {
-                        Toast.makeText(getActivity(), "Thêm Thất bại", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+        EditText editCategory = dialog.findViewById(R.id.editCategory);
+        Button btnAddMenu=dialog.findViewById(R.id.btnAđdMenu);
+        btnAddMenu.setOnClickListener(view -> {
+            MenuData menuData=new MenuData();
+            Menu menu=new Menu();
+            menu.setmName(editCategory.getText().toString());
+            menu.setRestaurantId(restaurant.getmId());
+            if(editCategory.getText().toString().equals("")){
+                Toast.makeText(getActivity(), "Vui lòng nhập thông tin", Toast.LENGTH_SHORT).show();
+            }else {
+                Observable<Integer> addMenu=Observable.just(menuData.insertMenuRes(menu));
+                compositeDisposable.add(addMenu
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(integer -> {
+                            if (integer > 0) {
+                                Toast.makeText(getActivity(), "Đã thêm", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Không thêm được", Toast.LENGTH_SHORT).show();
+                            }
+                        }, throwable -> {
+                            Toast.makeText(getActivity(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                        }));
             }
+
         });
 
 
 
-        mClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        mClose.setOnClickListener(view -> dialog.dismiss());
     }
 
     private void getInforRestaurant() {
@@ -210,36 +180,29 @@ public class MenuFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         if (item.getTitle().equals(Common.UPDATE)) {
-            showUpdateDialog();
+            showUpdateDialog(item);
         } else if (item.getTitle().equals(Common.DELETE)) {
-            confirmDeleteDialog();
+            confirmDeleteDialog(item);
         }
         return super.onContextItemSelected(item);
     }
 
-    private void confirmDeleteDialog() {
+    private void confirmDeleteDialog(final MenuItem item) {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_DayNight_Dialog_Alert);
         alertDialog.setTitle("Bạn có chắc chắn xóa không?");
         LayoutInflater layoutInflater = this.getLayoutInflater();
         View confirm_delete = layoutInflater.inflate(R.layout.confirm_delete, null);
         alertDialog.setView(confirm_delete);
-        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
+        alertDialog.setPositiveButton("OK", (dialogInterface, i) -> {
+            menuAdapter.itemRemoved(item.getOrder());
+            dialogInterface.dismiss();
         });
-        alertDialog.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
+        alertDialog.setNegativeButton("Hủy", (dialogInterface, i) -> dialogInterface.dismiss());
         alertDialog.show();
 
     }
 
-    private void showUpdateDialog() {
+    private void showUpdateDialog(final MenuItem item) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.CustomDialogAnimation);
         LayoutInflater layoutInflater = this.getLayoutInflater();
         View update_menu = layoutInflater.inflate(R.layout.dialog_add_menu, null);
@@ -252,12 +215,18 @@ public class MenuFragment extends Fragment {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, 700);
         ImageView mClose = dialog.findViewById(R.id.txt_close);
-        mClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
+        final EditText editCategory = dialog.findViewById(R.id.editCategory);
+        Button btnAddMenu=dialog.findViewById(R.id.btnAđdMenu);
+        btnAddMenu.setText("Cập nhật");
+        btnAddMenu.setOnClickListener(view -> {
+            Intent intent = getActivity().getIntent();
+            Restaurant restaurant = (Restaurant) intent.getSerializableExtra(Common.KEY_RESTAURANT);
+            menuAdapter.itemUpdate(item.getOrder(),editCategory.getText().toString(),restaurant.getmId());
+            Toast.makeText(getActivity(), editCategory.getText().toString(), Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
         });
+        mClose.setOnClickListener(view -> dialog.dismiss());
 
     }
+
 }

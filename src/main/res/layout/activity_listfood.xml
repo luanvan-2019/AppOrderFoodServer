@@ -7,19 +7,9 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back"/>
-        <TextView
-            android:id="@+id/txtNameMenuRes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textAllCaps="true"
-            android:text="Gà"
-            android:textSize="15sp"/>
+        android:layout_height="wrap_content"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -50,15 +40,6 @@
                 app:fab_icon="@drawable/ic_add"
                 android:id="@+id/action_add_food"
                 app:fab_title="Thêm món mới"/>
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="@color/white"
-                app:fab_colorPressed="@color/white"
-                app:fab_size="mini"
-                app:fab_icon="@drawable/ic_add"
-                android:id="@+id/action_add_category"
-                app:fab_title="Thêm loại mới"/>
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     </FrameLayout>
