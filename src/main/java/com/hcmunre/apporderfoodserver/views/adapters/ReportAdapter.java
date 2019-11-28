@@ -10,15 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.entity.Report;
+import com.hcmunre.apporderfoodserver.models.Entity.Food;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder> {
     private Context mContext;
-    ArrayList<Report> reports;
+    ArrayList<Food> reports;
 
-    public ReportAdapter(Context mContext, ArrayList<Report> reports) {
+    public ReportAdapter(Context mContext, ArrayList<Food> reports) {
         this.mContext = mContext;
         this.reports = reports;
     }
@@ -33,10 +38,13 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.ViewHolder holder, int position) {
-        Report report = reports.get(position);
-        holder.txt_resname.setText(report.getmResName());
-        holder.txt_totalfood.setText(report.getmTotalFood());
-        holder.txt_totalmoney.setText(report.getmTotalPrice());
+        Food report = reports.get(position);
+        holder.txt_name_food.setText(report.getName());
+        holder.txt_total_quantity.setText(String.valueOf(report.getQuantity()));
+        Float totalPrice=report.getQuantity()*report.getPrice();
+        Locale locale=new Locale("vi","VN");
+        NumberFormat numberFormat=NumberFormat.getInstance(locale);
+        holder.txt_total_price.setText(new StringBuilder(numberFormat.format(totalPrice)).append(" đ"));
     }
 
     @Override
@@ -45,13 +53,16 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_resname, txt_totalfood, txt_totalmoney;
+        @BindView(R.id.txt_name_food)
+        TextView txt_name_food;
+        @BindView(R.id.txt_total_quantity)
+        TextView txt_total_quantity;
+        @BindView(R.id.txt_total_price)
+        TextView txt_total_price;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt_resname = itemView.findViewById(R.id.txt_resname);
-            txt_totalfood = itemView.findViewById(R.id.txt_totalfood);
-            txt_totalmoney = itemView.findViewById(R.id.txt_totalmoney);
+            ButterKnife.bind(this,itemView);
 
         }
     }

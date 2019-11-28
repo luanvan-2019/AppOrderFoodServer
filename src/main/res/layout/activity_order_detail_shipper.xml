@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
+    <ScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:background="#ffffff"
+                android:weightSum="4"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=".Đã nhận đơn"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="#ffffff"
+                android:id="@+id/linear3"
+                android:layout_below="@id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="4">
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Số điện thoại"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/txt_phone"
+                        android:textColor="#262628"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0399458496"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_marginBottom="10dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/image_phone_call"
+                        android:gravity="center"
+                        android:fontFamily="@font/robotoregular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_phone"
+                        android:textSize="16sp"
+                        android:tint="@color/colorPrimary"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_below="@id/linear3"
+                android:orientation="horizontal"
+                android:id="@+id/linear4"
+                android:layout_width="match_parent"
+                android:layout_height="10dp">
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear5"
+                android:layout_below="@id/linear4"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="4"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Món ăn"
+                            android:textSize="14dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyc_order_detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGreyLight"/>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Thu của khách hàng"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:id="@+id/txt_total_price"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="500.000đ"
+                        android:textSize="16sp"
+                        android:textColor="#000000"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_below="@id/linear5"
+                android:orientation="horizontal"
+                android:id="@+id/linear6"
+                android:layout_width="match_parent"
+                android:layout_height="10dp">
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10.7dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:background="@color/colorPrimary"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:id="@+id/txt_confirm"
+            android:text="Giao hàng"/>
+        <TextView
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:background="@drawable/background_canuse_shape"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:id="@+id/txt_cancel"
+            android:text="Hủy đơn"/>
+    </LinearLayout>
+
+</RelativeLayout>

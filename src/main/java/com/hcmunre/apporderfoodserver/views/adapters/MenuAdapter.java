@@ -2,6 +2,10 @@ package com.hcmunre.apporderfoodserver.views.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.Database.MenuData;
-import com.hcmunre.apporderfoodserver.models.entity.Menu;
+import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 import com.hcmunre.apporderfoodserver.views.activities.ListFoodActivity;
 
 import java.util.ArrayList;
@@ -27,7 +31,7 @@ import butterknife.ButterKnife;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<Menu> listMenus;
-
+    FoodAdapter foodAdapter=new FoodAdapter();
     public MenuAdapter(Context mContext, ArrayList<Menu> menus) {
         this.mContext = mContext;
         this.listMenus = menus;
@@ -44,7 +48,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position) {
         final Menu menu=listMenus.get(position);
-        holder.imageMenu.setImageResource(menu.getRestaurantId());
+        if(menu.getImage()!=null){
+            byte[] decodeString = Base64.decode(menu.getImage(), Base64.DEFAULT);
+            Bitmap decodebitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+            holder.imageMenu.setImageBitmap(decodebitmap);
+        }
         holder.txtNameMenu.setText(menu.getmName());
         holder.itemView.setOnClickListener(view -> {
             Intent intent=new Intent(mContext, ListFoodActivity.class);
@@ -64,21 +72,18 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         notifyItemInserted(position);
     }
     public void itemRemoved(int position) {
-        listMenus.remove(position);
-        notifyItemRemoved(position);
         MenuData menuData=new MenuData();
         Toast.makeText(mContext, listMenus.get(position).getmId()+"", Toast.LENGTH_SHORT).show();
         menuData.deleteMenuRes(listMenus.get(position).getmId());
+        listMenus.remove(position);
+        notifyItemRemoved(position);
 
     }
-    public void itemUpdate(int position,String name,int restaurantId) {
-        notifyItemChanged(position);
+    public void itemUpdate(int position,Menu menu) {
         MenuData menuData=new MenuData();
-        Menu menu=new Menu();
         menu.setmId(listMenus.get(position).getmId());
-        menu.setmName(name);
-        menu.setRestaurantId(restaurantId);
         menuData.updateMenu(menu);
+        notifyItemChanged(position);
     }
 
 

@@ -6,11 +6,11 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal">
 
         <com.makeramen.roundedimageview.RoundedImageView
@@ -33,19 +33,9 @@
                 android:id="@+id/txtitem_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="canh bún"
+                android:text="Canh bún"
                 android:textColor="#262628"
                 android:textSize="15sp" />
-            <TextView
-                android:layout_marginTop="6dp"
-                android:textColor="#9b9b9b"
-                android:textSize="10sp"
-                android:text="Gà xối mở"
-                android:inputType="textMultiLine"
-                android:ellipsize="end"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtdescription"/>
 
             <TextView
                 android:id="@+id/txtitem_price"
@@ -58,18 +48,61 @@
 
 
         </LinearLayout>
-        <TextView
-            android:layout_marginRight="20dp"
-            android:id="@+id/txtadd"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Còn món"
-            android:textColor="@color/dark_blue"
-            android:fontFamily="@font/robotoregular"
-            android:textSize="13dp"
-            android:background="@drawable/round_button_light"/>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:id="@+id/llMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="12dp"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/quantityTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:textColor="#000000"
+                android:text="0"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/llPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

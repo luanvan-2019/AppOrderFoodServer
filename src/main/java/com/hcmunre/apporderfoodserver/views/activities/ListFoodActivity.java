@@ -1,18 +1,14 @@
 package com.hcmunre.apporderfoodserver.views.activities;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -25,7 +21,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -33,12 +28,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aldoapps.autoformatedittext.AutoFormatEditText;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.Database.FoodData;
-import com.hcmunre.apporderfoodserver.models.entity.Food;
-import com.hcmunre.apporderfoodserver.models.entity.Menu;
+import com.hcmunre.apporderfoodserver.models.Entity.Food;
+import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 import com.hcmunre.apporderfoodserver.views.adapters.FoodAdapter;
 
 import java.io.ByteArrayOutputStream;
@@ -62,6 +58,7 @@ public class ListFoodActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     EditText txtname_food,txtprice,txtdescription;
+    AutoFormatEditText txt_price;
     Button btnSelectImage,btnAddFood;
     ImageView imageFood;
     FoodData foodData=new FoodData();
@@ -116,7 +113,7 @@ public class ListFoodActivity extends AppCompatActivity {
                 }
             }
         }else{
-            Toast.makeText(this, "Lỗi", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Đã hủy", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -159,7 +156,7 @@ public class ListFoodActivity extends AppCompatActivity {
                             }else {
                                 Toast.makeText(ListFoodActivity.this, "Không thêm được", Toast.LENGTH_SHORT).show();
                             }
-                        }, throwable -> Toast.makeText(ListFoodActivity.this, "Lỗi"+throwable.getMessage(), Toast.LENGTH_SHORT).show())
+                        }, throwable -> Toast.makeText(ListFoodActivity.this, "Đã Hủy"+throwable.getMessage(), Toast.LENGTH_SHORT).show())
         );
         });
         chooseImage();
@@ -243,7 +240,7 @@ public class ListFoodActivity extends AppCompatActivity {
         LayoutInflater layoutInflater = this.getLayoutInflater();
         View confirm_delete = layoutInflater.inflate(R.layout.confirm_delete, null);
         alertDialog.setView(confirm_delete);
-        alertDialog.setPositiveButton("OK", (dialogInterface, i) -> {
+        alertDialog.setPositiveButton("Đồng ý", (dialogInterface, i) -> {
             adapter.removeFood(item.getOrder());
             dialogInterface.dismiss();
         });
@@ -254,12 +251,10 @@ public class ListFoodActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();
+        if(adapter!=null){
+            adapter.onStop();
+        }
         super.onDestroy();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override

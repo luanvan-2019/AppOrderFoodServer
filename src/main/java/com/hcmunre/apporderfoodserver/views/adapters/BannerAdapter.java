@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.entity.BannerModel;
+import com.hcmunre.apporderfoodserver.models.Entity.BannerModel;
 
 import java.util.ArrayList;
 

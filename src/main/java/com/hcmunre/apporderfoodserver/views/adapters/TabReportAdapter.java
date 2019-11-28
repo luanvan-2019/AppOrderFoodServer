@@ -19,9 +19,6 @@ public class TabReportAdapter extends FragmentStatePagerAdapter {
             case 0:
                 ResReportTabFragment tabReportFragment=new ResReportTabFragment();
                 return tabReportFragment;
-            case 1:
-                FoodReportFragment foodReportFragment=new FoodReportFragment();
-                return foodReportFragment;
             default:
                 return null;
         }

@@ -2,10 +2,10 @@ package com.hcmunre.apporderfoodserver.models.Database;
 
 import android.util.Log;
 
-import com.hcmunre.apporderfoodserver.models.entity.Food;
-import com.hcmunre.apporderfoodserver.models.entity.Menu;
+import com.hcmunre.apporderfoodserver.models.Entity.Food;
+import com.hcmunre.apporderfoodserver.models.Entity.HotFood;
+import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,6 @@ public class FoodData {
     DataConnetion dataConnetion = new DataConnetion();
     PreparedStatement pst;
     ResultSet rs;
-
     public ArrayList<Menu> getMenuResFood(int restaurantId) {
         ArrayList<Menu> listMenuFood = new ArrayList();
         try {
@@ -30,6 +29,7 @@ public class FoodData {
                 menu = new Menu();
                 menu.setmId(rs.getInt("Id"));
                 menu.setmName(rs.getString("Name"));
+                menu.setImage(rs.getString("Image"));
                 listMenuFood.add(menu);
             }
             con.close();
@@ -114,6 +114,63 @@ public class FoodData {
             e.printStackTrace();
         }
         return true;
+    }
+    public boolean updateStatus(Food food){
+        boolean success=false;
+        try {
+            String sql="Exec Sp_UpdateStatus '"+food.getId()+"','"+food.getStatusFood()+"'";
+            con=dataConnetion.connectionData();
+            PreparedStatement pst=con.prepareStatement(sql);
+            if(pst.executeUpdate()>0){
+                con.close();
+                success=true;
+            }else {
+                con.close();
+                success=false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
+    public ArrayList<HotFood> reportHotFood(int restaurantId){
+        ArrayList<HotFood> hotFoods=new ArrayList<>();
+        try {
+            String sql="Exec Sp_ReportHotFood '"+restaurantId+"'";
+            con=dataConnetion.connectionData();
+            PreparedStatement pst=con.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                HotFood hotFood=new HotFood();
+                hotFood.setFoodId(rs.getInt("FoodId"));
+                hotFood.setName(rs.getString("Name"));
+                hotFood.setPercent(rs.getDouble("Percentage"));
+                hotFoods.add(hotFood);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hotFoods;
+    }
+    public ArrayList<Food> reportAllFood(int restaurantId,String from,String to){
+        ArrayList<Food> foods=new ArrayList<>();
+        try {
+            String sql="Exec Sp_ReportAllFood '"+restaurantId+"','"+from+"','"+to+"'";
+            con=dataConnetion.connectionData();
+            PreparedStatement pst=con.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                Food food=new Food();
+                food.setId(rs.getInt("FoodId"));
+                food.setName(rs.getString("Name"));
+                food.setPrice(rs.getFloat("Price"));
+                food.setQuantity(rs.getInt("Quantity"));
+                foods.add(food);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return foods;
     }
 
 

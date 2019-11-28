@@ -1,7 +1,7 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/border">
     <ImageView
         android:id="@+id/txt_close"
@@ -36,7 +36,6 @@
             android:id="@+id/txtname_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapWords"
             android:text=""
             android:textColor="#000"
             android:background="#f0f0f4"
@@ -60,6 +59,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:textColor="#000"
+            android:background="#f0f0f4"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawablePadding="16dp"/>
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:textColor="#000000"
+        android:text="Mô tả"
+        android:textSize="15sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
+        <EditText
+            android:id="@+id/txtdescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text=""
             android:textColor="#000"
             android:background="#f0f0f4"
@@ -74,24 +94,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textColor="#000000"
-            android:text="Mô tả"
+            android:text="Trạng thái"
             android:textSize="15sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"/>
-        <EditText
-            android:id="@+id/txtdescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:text=""
-            android:textColor="#000"
-            android:background="#f0f0f4"
-            android:padding="12dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+        <Spinner
+            android:id="@+id/spinner_status"
+            android:padding="16dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:drawablePadding="16dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -15,70 +15,11 @@
             android:background="#ffffff"
             app:tabMode="fixed"
             app:tabGravity="fill"
-            app:tabIndicatorColor="#d22532"
+            app:tabIndicatorColor="@color/colorPrimary"
             app:tabTextAppearance="@style/CustomTextAppearance"
             android:id="@+id/tablayout_report">
             <!--            <include layout="@layout/fragment_home2"/>-->
         </com.google.android.material.tabs.TabLayout>
-        <LinearLayout
-            android:background="@color/colorGreyLight"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-                    <FrameLayout
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp">
-                        <TextView
-                            android:id="@+id/txtCategory"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Hôm nay"
-                            android:textColor="@color/dark_blue"
-                            android:textSize="13dp"
-                            android:fontFamily="@font/robotoregular"
-                            android:layout_marginLeft="16dp"
-                            android:background="@drawable/round_button_light"/>
-                        <ImageView
-                            android:paddingLeft="10dp"
-                            android:layout_gravity="right|center_vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="15dp"
-                            android:tint="@color/dark_blue"
-                            android:src="@drawable/ic_keyboard_arrow_down"/>
-                    </FrameLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="150"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="1.500.000đ"/>
-                </LinearLayout>
-
-        </LinearLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"

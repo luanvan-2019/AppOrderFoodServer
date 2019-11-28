@@ -1,15 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
+        android:id="@+id/mail1"
+        android:background="@color/colorGreyLight"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <FrameLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/txt_date_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="27/11/2019"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/round_button_light_date"/>
+                <ImageView
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:tint="@color/dark_blue"
+                    android:src="@drawable/ic_keyboard_arrow_down"/>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="đến"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/txt_date_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="27/11/2019"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/round_button_light_date"/>
+                <ImageView
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:tint="@color/dark_blue"
+                    android:src="@drawable/ic_keyboard_arrow_down"/>
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/mail1"
+        android:id="@+id/mail"
+        android:background="@color/colorGreyLight"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <FrameLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/txt_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn"
+                    android:textColor="@color/white"
+                    android:textSize="13dp"
+                    android:gravity="center"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:fontFamily="@font/robotoregular"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/background_button_cart"/>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_total_quantity"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="0"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_total_price"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0đ"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_below="@id/mail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerview"/>
+        android:fillViewport="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyc_order"/>
+            <com.github.mikephil.charting.charts.PieChart
+                android:layout_margin="10dp"
+                android:layout_below="@id/recyc_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/piechart"/>
+        </RelativeLayout>
 
-</LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
 
 
 

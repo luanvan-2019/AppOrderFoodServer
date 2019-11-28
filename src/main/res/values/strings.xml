@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppOrderFoodServer</string>
-    <string name="map_key" translatable="false">AIzaSyCoc1jHvB0Uhk8efsInB60-Fprg_qCIJNU</string>
+    <string name="map_key" translatable="false">AIzaSyDb8vrfFWCuSNigtxvfM-zC-4MvNQlGIFQ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

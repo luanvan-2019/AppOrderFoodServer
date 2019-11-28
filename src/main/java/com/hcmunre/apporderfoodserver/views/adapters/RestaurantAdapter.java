@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hcmunre.apporderfoodserver.R;
-import com.hcmunre.apporderfoodserver.models.entity.Restaurant;
+import com.hcmunre.apporderfoodserver.models.Entity.Restaurant;
 import com.hcmunre.apporderfoodserver.views.activities.OrderDetailActivity;
 import java.util.ArrayList;
 

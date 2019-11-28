@@ -25,13 +25,12 @@ public class ReportFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_reports,
                 container, false);
         tabLayout=rootView.findViewById(R.id.tablayout_report);
-        viewPager=rootView.findViewById(R.id.viewpager_report   );
+        viewPager=rootView.findViewById(R.id.viewpager_report);
         listReport();
         return rootView;
     }
     private void listReport(){
-        tabLayout.addTab(tabLayout.newTab().setText("Cửa hàng"));
-        tabLayout.addTab(tabLayout.newTab().setText("Món ăn"));
+        tabLayout.addTab(tabLayout.newTab().setText("Báo cáo"));
         tabReportAdapter = new TabReportAdapter(getActivity().getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(tabReportAdapter);

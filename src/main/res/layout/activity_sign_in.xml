@@ -3,146 +3,148 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/logo_delivery"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/ic_restaurant" />
-
-      <TextView
-        android:id="@+id/signin"
-          android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo_delivery"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Đăng nhập"
-        android:textColor="#00051f"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signin"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editEmail"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/logo_delivery"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email của bạn"
-                android:textSize="15sp"
-                android:inputType="textEmailAddress" />
+                android:layout_height="70dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_restaurant" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mật khẩu"
-                android:textSize="15sp"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btnSigin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_button_shape"
-            android:gravity="center"
-            android:text="Đăng nhập"
-            android:textAllCaps="false"
-            android:textSize="13sp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="hoặc đăng nhập với:"
-            android:textColor="#2C3646" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/loginphone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_phone_shape"
+            <TextView
+                android:id="@+id/signin"
                 android:gravity="center"
-                android:textSize="13sp"
-                android:text="Số điện thoại"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo_delivery"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Đăng nhập"
+                android:textColor="#00051f"
+                android:textSize="20sp" />
 
-        </LinearLayout>
-        <ProgressBar
-            android:indeterminateTint="#2196F3"
-            android:id="@+id/progress_login"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/signin"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorEnabled="true"
+                    app:passwordToggleEnabled="true">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email của bạn"
+                        android:textSize="15sp"
+                        android:inputType="textEmailAddress" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/txtSignup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Bạn chưa có tài khoản nhà hàng?"
-            android:textColor="#2C3646"
-            android:textSize="14dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:errorEnabled="true"
+                    app:passwordToggleEnabled="true">
 
-        <TextView
-            android:id="@+id/txtForgetPass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quên mật khẩu?"
-            android:textColor="#2C3646"
-            android:textSize="14dp" />
-    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mật khẩu"
+                        android:textSize="15sp"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnSigin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_button_shape"
+                    android:gravity="center"
+                    android:text="Đăng nhập"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="hoặc đăng nhập với:"
+                    android:textColor="#2C3646" />
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/loginphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_phone_shape"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:text="Số điện thoại"
+                        android:textAllCaps="false"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="100dp"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtSignup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bạn chưa có tài khoản nhà hàng?"
+                    android:textColor="#2C3646"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txtForgetPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quên mật khẩu?"
+                    android:textColor="#2C3646"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
