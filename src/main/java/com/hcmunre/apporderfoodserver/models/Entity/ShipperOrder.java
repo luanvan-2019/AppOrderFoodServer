@@ -1,6 +1,7 @@
 package com.hcmunre.apporderfoodserver.models.Entity;
 
 public class ShipperOrder {
+    private int userId;
     private int orderID;
     private int restaurantId,shipperId;
     private String orderName,orderPhone,orderAddress,transactionId;
@@ -11,6 +12,14 @@ public class ShipperOrder {
     private Double totalPrice;
 
     public ShipperOrder() {
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getOrderID() {

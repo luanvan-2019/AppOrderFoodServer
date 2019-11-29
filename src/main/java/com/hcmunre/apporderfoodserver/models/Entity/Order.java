@@ -8,6 +8,7 @@ public class Order {
     private Date orderDate;
     private Float totalPrice;
     private int numberOfItem;
+    private int payment;
 
     public Order() {
     }
@@ -90,5 +91,13 @@ public class Order {
 
     public void setNumberOfItem(int numberOfItem) {
         this.numberOfItem = numberOfItem;
+    }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public void setPayment(int payment) {
+        this.payment = payment;
     }
 }

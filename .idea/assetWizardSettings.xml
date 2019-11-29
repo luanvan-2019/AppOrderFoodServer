@@ -184,9 +184,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="eeeeee" />
-                            <entry key="outputName" value="ic_receipt" />
-                            <entry key="sourceFile" value="D:\ProjectAndroid\images\ic_reports.svg" />
+                            <entry key="outputName" value="app_icon" />
+                            <entry key="sourceFile" value="E:\unnamed1.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -73,6 +73,7 @@ public class ShipperData {
             ResultSet rs=pst.executeQuery();
             while(rs.next()){
                 ShipperOrder shipperOrder=new ShipperOrder();
+                shipperOrder.setUserId(rs.getInt("UserId"));
                 shipperOrder.setOrderID(rs.getInt("OrderId"));
                 shipperOrder.setShippingStatus(rs.getInt("ShippingStatus"));
                 shipperOrder.setOrderName(rs.getString("OrderName"));

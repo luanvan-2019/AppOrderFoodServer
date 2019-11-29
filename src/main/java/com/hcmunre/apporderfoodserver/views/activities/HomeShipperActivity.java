@@ -12,6 +12,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.views.fragments.AccountFragment;
+import com.hcmunre.apporderfoodserver.views.fragments.AccountShipperFragment;
 import com.hcmunre.apporderfoodserver.views.fragments.HomeShipperFragment;
 
 public class HomeShipperActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class HomeShipperActivity extends AppCompatActivity {
                         selectedFragment = new HomeShipperFragment();
                         break;
                     case R.id.nav_user:
-                        selectedFragment = new AccountFragment();
+                        selectedFragment = new AccountShipperFragment();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

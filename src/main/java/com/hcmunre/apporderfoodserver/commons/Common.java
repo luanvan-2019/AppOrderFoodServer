@@ -3,8 +3,13 @@ package com.hcmunre.apporderfoodserver.commons;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 import com.hcmunre.apporderfoodserver.models.Entity.Order;
@@ -12,8 +17,14 @@ import com.hcmunre.apporderfoodserver.models.Entity.Restaurant;
 import com.hcmunre.apporderfoodserver.models.Entity.RestaurantOwner;
 import com.hcmunre.apporderfoodserver.models.Entity.Shipper;
 import com.hcmunre.apporderfoodserver.models.Entity.ShipperOrder;
+import com.hcmunre.apporderfoodserver.notifications.MySingleton;
+import com.hcmunre.apporderfoodserver.views.activities.OrderDetailActivity;
+
+import org.json.JSONObject;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Common {
     public static Restaurant currentRestaurant;
@@ -27,6 +38,9 @@ public class Common {
     public static final String UPDATE = "Cập nhật";
     public static final String DELETE = "Xóa";
     public static final String TAG="ERROR";
+    public static String FCM_API = "https://fcm.googleapis.com/fcm/send";
+    public static String serverKey = "key=" + "AAAABxgzzk4:APA91bFOUq0T_vGnwemLQfJcU6akuV1gLQVJdL5mxyxV1m1bDeDbapGb8mWH0gKqSL2tSyuS_A7kTD3iWTfeFK0NhHNhcu8TY7Z7ClSu8LA2xJSJoDaYhbOge7MUF1J8V6FSRiUeDW8i";
+    public static String contentType = "application/json";
     public static boolean isConnectedToInternet(Context context) {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -43,54 +57,6 @@ public class Common {
             }
         }
         return false;
-    }
-    public static int convertStatusToIndex(int orderStatus){
-        if(orderStatus==-1){
-            return 3;
-        }else {
-            return orderStatus;
-        }
-    }
-    public static int convertStatusFoodToIndex(int statusFood){
-        if(statusFood==1)
-            return 1;
-        return statusFood;
-    }
-    public static String convertStatusToString(int orderStatus) {
-        switch (orderStatus) {
-            case 0:
-                return "Đã đặt";
-            case 1:
-                return "Đang giao";
-            case 2:
-                return "Đã giao";
-            case -1:
-                return "Đã hủy";
-            default:
-                return "Đã hủy";
-        }
-    }
-    public static String convertStatusFoodToString(int statusFood){
-        switch (statusFood){
-            case 0:
-                return "Hết món";
-            case 1:
-                return "Đang bán";
-            default:
-                return "Đang bán";
-        }
-    }
-    public static int convertStringToStatus(String status){
-        if(status.equals("Đã đặt")){
-            return 0;
-        }else if(status.equals("Đang giao")){
-            return 1;
-        }else if(status.equals("Đã giao")){
-            return 2;
-        }else if(status.equals("Đã hủy")){
-            return -1;
-        }
-        return -1;
     }
     public static int convertStringToStatusFood(String status){
         if(status.equals("Hết món")){
@@ -123,5 +89,33 @@ public class Common {
 
     public static String getTopicChannelShippper(int userId) {
         return new StringBuilder("Shipper").append(userId).toString();
+    }
+    public static String getTopicChannelUser(int userId) {
+        return new StringBuilder("User").append(userId).toString();
+    }
+    public static void sendNotification(JSONObject notification,Context context) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, "Yêu cầu lỗi", Toast.LENGTH_LONG).show();
+                        Log.i(TAG, "Lỗi");
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization", serverKey);
+                params.put("Content-Type", contentType);
+                return params;
+            }
+        };
+        MySingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 }

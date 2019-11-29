@@ -36,6 +36,7 @@ public class OrderData {
                 order.setOrderDate(rs.getDate("OrderDate"));
                 order.setTotalPrice(rs.getFloat("TotalPrice"));
                 order.setNumberOfItem(rs.getInt("NumberOfItem"));
+                order.setPayment(rs.getInt("Payment"));
                 orders.add(order);
             }
         } catch (SQLException e) {

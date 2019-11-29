@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -42,10 +47,16 @@ import com.hcmunre.apporderfoodserver.directionHelper.Route;
 import com.hcmunre.apporderfoodserver.models.Database.OrderData;
 import com.hcmunre.apporderfoodserver.models.Database.ShipperData;
 import com.hcmunre.apporderfoodserver.models.Entity.Order;
+import com.hcmunre.apporderfoodserver.notifications.MySingleton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,6 +83,9 @@ public class ShipperMapActivity extends AppCompatActivity implements OnMapReadyC
     private static final int REQUEST_LOCATION = 1;
     ShipperData shipperData=new ShipperData();
     OrderData orderData=new OrderData();
+    final String TAG = "NOTIFICATION TAG";
+    String NOTIFICATION_TITLE;
+    String NOTIFICATION_MESSAGE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,9 +119,24 @@ public class ShipperMapActivity extends AppCompatActivity implements OnMapReadyC
                 if(success==true){
                     if(success_update_order==true){
                         Common.showToast(ShipperMapActivity.this,"Đã giao hàng xong");
+                        NOTIFICATION_TITLE = "Giao hàng";
+                        NOTIFICATION_MESSAGE ="Đơn hàng "+Common.currentOrder.getOrderId()+" đã giao xong ?";
+
+                        JSONObject notification = new JSONObject();
+                        JSONObject notifcationBody = new JSONObject();
+                        try {
+                            notifcationBody.put("title", NOTIFICATION_TITLE);
+                            notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+                            notification.put("to", Common.createTopicSender(Common.getTopicChannelUser(Common.currrentShipperOrder.getUserId())));
+                            notification.put("data", notifcationBody);
+                        } catch (JSONException e) {
+                            Log.e(TAG, "Lỗi " + e.getMessage());
+                        }
+                        Common.sendNotification(notification,ShipperMapActivity.this);
                     }
                 }else {
-                    Common.showToast(ShipperMapActivity.this,"Không thể hoan tất");
+                    Common.showToast(ShipperMapActivity.this,"Không thể hoàn tất");
                 }
             }
         });

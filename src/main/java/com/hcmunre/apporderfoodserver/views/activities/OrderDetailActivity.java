@@ -9,19 +9,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CancellationSignal;
-import android.os.ParcelFileDescriptor;
-import android.print.PageRange;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
-import android.provider.DocumentsContract;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,17 +23,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.Database.OrderData;
@@ -49,8 +37,6 @@ import com.hcmunre.apporderfoodserver.models.Entity.Order;
 import com.hcmunre.apporderfoodserver.models.Entity.OrderDetail;
 import com.hcmunre.apporderfoodserver.models.Entity.Shipper;
 import com.hcmunre.apporderfoodserver.models.Entity.ShipperOrder;
-import com.hcmunre.apporderfoodserver.models.Entity.Status;
-import com.hcmunre.apporderfoodserver.notifications.MySingleton;
 import com.hcmunre.apporderfoodserver.views.adapters.OrderDetailAdapter;
 import com.hcmunre.apporderfoodserver.views.adapters.PdfPrintDocumentAdapter;
 import com.hcmunre.apporderfoodserver.views.adapters.SpinnerAdapter;
@@ -76,16 +62,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class OrderDetailActivity extends AppCompatActivity {
     @BindView(R.id.txt_phone)
@@ -104,6 +84,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     ImageView image_phone_call;
     @BindView(R.id.spinner_shipper)
     Spinner spinner_shipper;
+    @BindView(R.id.txt_payment)
+    TextView txt_payment;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     OrderData orderData = new OrderData();
     ArrayList<OrderDetail> orderDetailList=new ArrayList<>();
@@ -112,9 +94,6 @@ public class OrderDetailActivity extends AppCompatActivity {
     private ArrayList<Shipper> shippers;
     private SpinnerAdapter spinnerAdapter;
     ShipperData shipperData=new ShipperData();
-    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    final private String serverKey = "key=" + "AAAABxgzzk4:APA91bFOUq0T_vGnwemLQfJcU6akuV1gLQVJdL5mxyxV1m1bDeDbapGb8mWH0gKqSL2tSyuS_A7kTD3iWTfeFK0NhHNhcu8TY7Z7ClSu8LA2xJSJoDaYhbOge7MUF1J8V6FSRiUeDW8i";
-    final private String contentType = "application/json";
     final String TAG = "NOTIFICATION TAG";
     String NOTIFICATION_TITLE;
     String NOTIFICATION_MESSAGE;
@@ -125,7 +104,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         init();
         eventClick();
         new getShipperForOrder().execute();
-        getOrderDetail();
+        new getOrderDetail();
     }
 
     public class getShipperForOrder extends AsyncTask<String,String,ArrayList<Shipper>> {
@@ -153,6 +132,13 @@ public class OrderDetailActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyc_order_detail.setLayoutManager(linearLayoutManager);
         recyc_order_detail.addItemDecoration(new DividerItemDecoration(this, linearLayoutManager.getOrientation()));
+        if(Common.currentOrder.getPayment()==1){
+            txt_payment.setText("Đã thanh toán bằng Paypal");
+            txt_total_price.setVisibility(View.GONE);
+        }else if(Common.currentOrder.getPayment()==0){
+            txt_payment.setText("Thu của khách hàng");
+            txt_total_price.setText(new StringBuilder(Common.currentOrder.getTotalPrice()+"").append("đ"));
+        }
 
     }
     private void eventClick() {
@@ -178,9 +164,6 @@ public class OrderDetailActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            txt_confirm.setOnClickListener(v -> {
-                new shipper().execute();
-            });
             txt_cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -188,6 +171,10 @@ public class OrderDetailActivity extends AppCompatActivity {
                 }
             });
         });
+        txt_confirm.setOnClickListener(v -> {
+            new shipper().execute();
+        });
+
     }
 
 
@@ -197,21 +184,27 @@ public class OrderDetailActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void getOrderDetail() {
-        Observable<ArrayList<OrderDetail>> listOrder = Observable.just(orderData.getOrderDetail(Common.currentOrder.getOrderId()));
-        compositeDisposable.add(
-                listOrder
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(orderDetails -> {
-                            orderDetailList=orderDetails;
-                            OrderDetailAdapter orderDetailAdapter = new OrderDetailAdapter(this, orderDetailList);
-                            recyc_order_detail.setAdapter(orderDetailAdapter);
-                            orderDetailAdapter.notifyDataSetChanged();
-                        }, throwable -> {
-                            Toast.makeText(this, "Lỗi " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                        })
-        );
+    public class getOrderDetail extends AsyncTask<String,String,ArrayList<OrderDetail>>{
+        public getOrderDetail() {
+            this.execute();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<OrderDetail> orderDetails) {
+            if(orderDetails!=null){
+                orderDetailList=orderDetails;
+                OrderDetailAdapter orderDetailAdapter = new OrderDetailAdapter(OrderDetailActivity.this, orderDetailList);
+                recyc_order_detail.setAdapter(orderDetailAdapter);
+                orderDetailAdapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        protected ArrayList<OrderDetail> doInBackground(String... strings) {
+            ArrayList<OrderDetail> orderDetails;
+            orderDetails=orderData.getOrderDetail(Common.currentOrder.getOrderId());
+            return orderDetails;
+        }
     }
     private void printOrder(){
         creatPDFFile(Common.getAppPath(OrderDetailActivity.this)+filename);
@@ -366,7 +359,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     Log.e(TAG, "onCreate: " + e.getMessage());
                 }
-                sendNotification(notification);
+                Common.sendNotification(notification,OrderDetailActivity.this);
                 progressDialog.dismiss();
             }else {
                 Toast.makeText(OrderDetailActivity.this, "chưa giao", Toast.LENGTH_SHORT).show();
@@ -385,31 +378,6 @@ public class OrderDetailActivity extends AppCompatActivity {
             boolean success=orderData.shippingOrder(shipperOrder);
             return success;
         }
-    }
-    private void sendNotification(JSONObject notification) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(OrderDetailActivity.this, "Yêu cầu lỗi", Toast.LENGTH_LONG).show();
-                        Log.i(TAG, "Lỗi");
-                    }
-                }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Authorization", serverKey);
-                params.put("Content-Type", contentType);
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
