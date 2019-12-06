@@ -60,8 +60,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,6 +88,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     Spinner spinner_shipper;
     @BindView(R.id.txt_payment)
     TextView txt_payment;
+    @BindView(R.id.image_chat)
+    ImageView image_chat;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     OrderData orderData = new OrderData();
     ArrayList<OrderDetail> orderDetailList=new ArrayList<>();
@@ -132,12 +136,14 @@ public class OrderDetailActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyc_order_detail.setLayoutManager(linearLayoutManager);
         recyc_order_detail.addItemDecoration(new DividerItemDecoration(this, linearLayoutManager.getOrientation()));
+        Locale locale=new Locale("vi","VN");
+        NumberFormat numberFormat=NumberFormat.getInstance(locale);
         if(Common.currentOrder.getPayment()==1){
-            txt_payment.setText("Đã thanh toán bằng Paypal");
+            txt_payment.setText("Đã thanh toán bằng PayPal");
             txt_total_price.setVisibility(View.GONE);
         }else if(Common.currentOrder.getPayment()==0){
             txt_payment.setText("Thu của khách hàng");
-            txt_total_price.setText(new StringBuilder(Common.currentOrder.getTotalPrice()+"").append("đ"));
+            txt_total_price.setText(new StringBuilder(numberFormat.format(Common.currentOrder.getTotalPrice())+"").append("đ"));
         }
 
     }
@@ -174,9 +180,14 @@ public class OrderDetailActivity extends AppCompatActivity {
         txt_confirm.setOnClickListener(v -> {
             new shipper().execute();
         });
+        image_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
-
 
     @Override
     protected void onDestroy() {

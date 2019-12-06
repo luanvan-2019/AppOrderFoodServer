@@ -66,6 +66,7 @@ public class SignInData {
                 restaurantOwner1.setPhone(rs.getString("PhoneOwner"));
                 restaurantOwner1.setImage(rs.getString("ImageOwner"));
                 restaurantOwner1.setEmail(rs.getString("Email"));
+                restaurantOwner1.setPermission(rs.getString("Permission"));
                 con.close();
             }
         } catch (SQLException e) {

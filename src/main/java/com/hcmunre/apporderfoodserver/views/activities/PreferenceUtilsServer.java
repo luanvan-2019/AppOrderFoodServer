@@ -77,6 +77,16 @@ public class PreferenceUtilsServer {
         SharedPreferences sharedPreferences=context.getSharedPreferences("SaveLocal",context.MODE_PRIVATE);
         return sharedPreferences.getString("RestaurantAddress",null);
     }
+    public static void savePermission(String permission,Context context){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("SaveLocal",context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("Permission",permission);
+        editor.apply();
+    }
+    public static String getPermission(Context context){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("SaveLocal",context.MODE_PRIVATE);
+        return sharedPreferences.getString("Permission",null);
+    }
     public static void saveUserId(int userId,Context context){
         SharedPreferences sharedPreferences=context.getSharedPreferences("SaveLocal",context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();

@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:textSize="15sp"
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -125,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:textSize="15sp"
                 android:id="@+id/txt_total_quantity"
                 android:gravity="center"
                 android:layout_width="wrap_content"
@@ -136,6 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:textSize="15sp"
                 android:id="@+id/txt_total_price"
                 android:gravity="center"
                 android:layout_width="match_parent"

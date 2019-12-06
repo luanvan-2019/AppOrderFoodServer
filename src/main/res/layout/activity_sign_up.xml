@@ -21,18 +21,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-            <TextView
-                android:id="@+id/signin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Đăng kí nhà hàng"
-                android:textColor="#00051f"
-                android:textSize="20sp" />
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_name_restaurant"
-                android:layout_below="@id/signin"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tên quán"
@@ -109,15 +99,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Địa chỉ"
                 android:textSize="15sp"/>
-            <fragment
-                android:layout_below="@id/edit_address"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"/>
             <Button
-                android:layout_below="@id/map"
-                android:layout_marginTop="16dp"
+                android:layout_below="@id/edit_address"
+                android:layout_marginTop="20dp"
                 android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

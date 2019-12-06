@@ -36,7 +36,7 @@
             android:id="@+id/txtname_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:textSize="15sp"
             android:textColor="#000"
             android:background="#f0f0f4"
             android:padding="12dp"
@@ -54,11 +54,12 @@
             android:textSize="15sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp" />
-        <EditText
+        <me.abhinay.input.CurrencyEditText
             android:id="@+id/txtprice"
+            android:textSize="15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textColor="#000"
             android:background="#f0f0f4"
             android:padding="12dp"
@@ -80,10 +81,10 @@
             android:id="@+id/txtdescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
             android:textColor="#000"
             android:background="#f0f0f4"
             android:padding="12dp"
+            android:textSize="15sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
@@ -98,15 +99,20 @@
             android:textSize="15sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"/>
-        <Spinner
-            android:id="@+id/spinner_status"
-            android:padding="16dp"
+        <androidx.appcompat.widget.SwitchCompat
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch_status"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:thumb="@drawable/custom_switch"
+            app:track="@drawable/switch_track"
+            app:showText="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,7 +142,6 @@
                 android:layout_height="wrap_content"
                 android:text="Chọn hình"/>
         </LinearLayout>
-
         <Button
             android:id="@+id/btnAddFood"
             android:layout_width="match_parent"
@@ -149,6 +154,5 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp" />
     </LinearLayout>
-
 
 </RelativeLayout>

@@ -31,7 +31,8 @@ import butterknife.ButterKnife;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<Menu> listMenus;
-    FoodAdapter foodAdapter=new FoodAdapter();
+    FoodAdapter foodAdapter = new FoodAdapter();
+
     public MenuAdapter(Context mContext, ArrayList<Menu> menus) {
         this.mContext = mContext;
         this.listMenus = menus;
@@ -40,23 +41,23 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @NonNull
     @Override
     public MenuAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_menu,parent,false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_menu, parent, false);
         return new MenuAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position) {
-        final Menu menu=listMenus.get(position);
-        if(menu.getImage()!=null){
+        final Menu menu = listMenus.get(position);
+        if (menu.getImage() != null) {
             byte[] decodeString = Base64.decode(menu.getImage(), Base64.DEFAULT);
             Bitmap decodebitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
             holder.imageMenu.setImageBitmap(decodebitmap);
         }
         holder.txtNameMenu.setText(menu.getmName());
         holder.itemView.setOnClickListener(view -> {
-            Intent intent=new Intent(mContext, ListFoodActivity.class);
-            intent.putExtra(Common.KEY_MENU,menu);
+            Intent intent = new Intent(mContext, ListFoodActivity.class);
+            intent.putExtra(Common.KEY_MENU, menu);
             mContext.startActivity(intent);
         });
     }
@@ -66,43 +67,52 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         return listMenus.size();
     }
 
-    public void addItem(int position, Menu menu)
-    {
+    public void addItem(int position, Menu menu) {
         listMenus.add(position, menu);
         notifyItemInserted(position);
     }
+
     public void itemRemoved(int position) {
-        MenuData menuData=new MenuData();
-        Toast.makeText(mContext, listMenus.get(position).getmId()+"", Toast.LENGTH_SHORT).show();
+        MenuData menuData = new MenuData();
+        Toast.makeText(mContext, listMenus.get(position).getmId() + "", Toast.LENGTH_SHORT).show();
         menuData.deleteMenuRes(listMenus.get(position).getmId());
         listMenus.remove(position);
         notifyItemRemoved(position);
 
     }
-    public void itemUpdate(int position,Menu menu) {
-        MenuData menuData=new MenuData();
+
+    public void itemUpdate(int position, Menu menu) {
+        MenuData menuData = new MenuData();
         menu.setmId(listMenus.get(position).getmId());
-        menuData.updateMenu(menu);
+        boolean success = menuData.updateMenu(menu);
+        if (success == true) {
+            Common.showToast(mContext, "Đã cập nhật");
+        } else {
+            Common.showToast(mContext, "Không thể cập nhật");
+        }
         notifyItemChanged(position);
     }
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
+    public Menu getItem(int position){
+        return listMenus.get(position);
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         @BindView(R.id.imageMenu)
         ImageView imageMenu;
         @BindView(R.id.txtNameMenu)
         TextView txtNameMenu;
+
         public ViewHolder(@NonNull View view) {
             super(view);
-           ButterKnife.bind(this,view);
-           view.setOnCreateContextMenuListener(this);
+            ButterKnife.bind(this, view);
+            view.setOnCreateContextMenuListener(this);
         }
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Chọn");
-            contextMenu.add(0,0,getAdapterPosition(),Common.UPDATE);
-            contextMenu.add(0,1,getAdapterPosition(),Common.DELETE);
+            contextMenu.add(0, 0, getAdapterPosition(), Common.UPDATE);
+            contextMenu.add(0, 1, getAdapterPosition(), Common.DELETE);
         }
     }
 

@@ -41,7 +41,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
         Food report = reports.get(position);
         holder.txt_name_food.setText(report.getName());
         holder.txt_total_quantity.setText(String.valueOf(report.getQuantity()));
-        Float totalPrice=report.getQuantity()*report.getPrice();
+        Integer totalPrice=report.getQuantity()*report.getPrice();
         Locale locale=new Locale("vi","VN");
         NumberFormat numberFormat=NumberFormat.getInstance(locale);
         holder.txt_total_price.setText(new StringBuilder(numberFormat.format(totalPrice)).append(" đ"));

@@ -39,7 +39,7 @@
             <TextView
                 android:layout_marginTop="6dp"
                 android:textColor="#9b9b9b"
-                android:textSize="10sp"
+                android:textSize="13sp"
                 android:text="Gà xối mở"
                 android:inputType="textMultiLine"
                 android:ellipsize="end"
@@ -54,18 +54,22 @@
                 android:layout_marginTop="6dp"
                 android:text="50.00"
                 android:textColor="#9b9b9b"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
 
         </LinearLayout>
-        <androidx.appcompat.widget.AppCompatSpinner
+        <androidx.appcompat.widget.SwitchCompat
             android:layout_marginRight="10dp"
-            android:id="@+id/spinner_status_food"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/dark_blue"
-            android:fontFamily="@font/robotoregular"
-            android:textSize="13dp"/>
+            android:id="@+id/switch_status"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textOff="OFF"
+            android:textOn="ON"
+            android:thumb="@drawable/custom_switch"
+            app:track="@drawable/switch_track"
+            app:showText="true"/>
     </LinearLayout>
 
     <View

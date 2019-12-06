@@ -53,8 +53,8 @@ public class OrderReceivedAdatper extends RecyclerView.Adapter<OrderReceivedAdat
     public void onBindViewHolder(@NonNull OrderReceivedAdatper.ViewHolder holder, int position) {
         Order order=listOrderHistory.get(position);
         holder.txt_orderId.setText(order.getOrderId()+"");
-        holder.txt_quantity.setText(order.getNumberOfItem()+"");
-        holder.txt_total_price.setText(String.valueOf(holder.numberFormat.format(order.getTotalPrice())));
+        holder.txt_quantity.setText(new StringBuilder(order.getNumberOfItem()+"").append("phần x"));
+        holder.txt_total_price.setText(new StringBuilder(holder.numberFormat.format(order.getTotalPrice())).append("đ"));
         holder.txt_name_customer.setText(order.getOrderName());
         holder.btn_cancel.setVisibility(View.GONE);
         holder.btn_confirm.setVisibility(View.GONE);

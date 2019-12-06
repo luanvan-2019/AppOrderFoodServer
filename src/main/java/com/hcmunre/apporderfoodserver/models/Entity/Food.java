@@ -8,7 +8,7 @@ public class Food implements Parcelable {
     private String name;
     private String imageFood;
     private String Description;
-    private Float price;
+    private int price;
     private int menuId;
     private int statusFood;
     private int quantity;
@@ -16,7 +16,7 @@ public class Food implements Parcelable {
 
     }
 
-    public Food(int id, String name, String imageFood, String description, Float price, int menuId) {
+    public Food(int id, String name, String imageFood, String description, int price, int menuId) {
         this.id = id;
         this.name = name;
         this.imageFood = imageFood;
@@ -25,18 +25,16 @@ public class Food implements Parcelable {
         this.menuId = menuId;
     }
 
+
     protected Food(Parcel in) {
         id = in.readInt();
         name = in.readString();
         imageFood = in.readString();
         Description = in.readString();
-        if (in.readByte() == 0) {
-            price = null;
-        } else {
-            price = in.readFloat();
-        }
+        price = in.readInt();
         menuId = in.readInt();
         statusFood = in.readInt();
+        quantity = in.readInt();
     }
 
     public static final Creator<Food> CREATOR = new Creator<Food>() {
@@ -83,11 +81,11 @@ public class Food implements Parcelable {
         Description = description;
     }
 
-    public Float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -126,14 +124,9 @@ public class Food implements Parcelable {
         dest.writeString(name);
         dest.writeString(imageFood);
         dest.writeString(Description);
-        if (price == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeFloat(price);
-        }
+        dest.writeInt(price);
         dest.writeInt(menuId);
         dest.writeInt(statusFood);
+        dest.writeInt(quantity);
     }
-
 }

@@ -7,6 +7,7 @@ public class RestaurantOwner {
     private String image;
     private int restaurantId;
     private String restaurantName,restaurantAddress;
+    private String permission;
     public RestaurantOwner(){
     }
 
@@ -106,5 +107,13 @@ public class RestaurantOwner {
 
     public void setRestaurantAddress(String restaurantAddress) {
         this.restaurantAddress = restaurantAddress;
+    }
+
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
 }

@@ -44,6 +44,7 @@ import com.hcmunre.apporderfoodserver.commons.Progress;
 import com.hcmunre.apporderfoodserver.models.Database.FoodData;
 import com.hcmunre.apporderfoodserver.models.Database.MenuData;
 import com.hcmunre.apporderfoodserver.models.Database.RestaurantData;
+import com.hcmunre.apporderfoodserver.models.Entity.FavoriteOnlyId;
 import com.hcmunre.apporderfoodserver.models.Entity.Food;
 import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 import com.hcmunre.apporderfoodserver.models.Entity.MenuFood;
@@ -76,16 +77,12 @@ public class MenuFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.recyc_detailfood)
     RecyclerView recyc_detailfood;
-    @BindView(R.id.action_add_food)
-    FloatingActionButton mActionAddFood;
     @BindView(R.id.action_add_category)
     FloatingActionButton mActionAddCate;
     @BindView(R.id.txtRestaurant)
     TextView txtRestaurant;
     @BindView(R.id.txtAddress)
     TextView txtAddress;
-    @BindView(R.id.txtCountMenu)
-    TextView txtCountMenu;
     @BindView(R.id.img_restaurant)
     ImageView img_restaurant;
     @BindView(R.id.progress)
@@ -116,7 +113,6 @@ public class MenuFragment extends Fragment {
     private void init() {
         mActionAddCate.setOnClickListener(view -> openDialogAddMenu());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         recyc_detailfood.setLayoutManager(gridLayoutManager);
         recyc_detailfood.setItemAnimator(new DefaultItemAnimator());
 
@@ -130,56 +126,11 @@ public class MenuFragment extends Fragment {
             }
         });
     }
-    private void openDialogAddMenu() {
-        Intent intent = getActivity().getIntent();
-        final Restaurant restaurant = (Restaurant) intent.getSerializableExtra(Common.KEY_RESTAURANT);
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.CustomDialogAnimation);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View add_menu = inflater.inflate(R.layout.dialog_add_menu, null);
-        alertDialog.setView(add_menu);
-        final AlertDialog dialog = alertDialog.create();
-        dialog.setCancelable(true);
-        dialog.show();
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, 700);
-        ImageView mClose = dialog.findViewById(R.id.txt_close);
-        EditText editCategory = dialog.findViewById(R.id.editCategory);
-        Button btnAddMenu=dialog.findViewById(R.id.btnAđdMenu);
-        btnAddMenu.setOnClickListener(view -> {
-            MenuData menuData=new MenuData();
-            Menu menu=new Menu();
-            menu.setmName(editCategory.getText().toString());
-            menu.setRestaurantId(restaurant.getmId());
-            if(editCategory.getText().toString().equals("")){
-                Toast.makeText(getActivity(), "Vui lòng nhập thông tin", Toast.LENGTH_SHORT).show();
-            }else {
-                Observable<Integer> addMenu=Observable.just(menuData.insertMenuRes(menu));
-                compositeDisposable.add(addMenu
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(integer -> {
-                            if (integer > 0) {
-                                Toast.makeText(getActivity(), "Đã thêm", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), "Không thêm được", Toast.LENGTH_SHORT).show();
-                            }
-                        }, throwable -> {
-                            Toast.makeText(getActivity(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                        }));
-            }
-
-        });
-
-
-
-        mClose.setOnClickListener(view -> dialog.dismiss());
-    }
 
     private void getInforRestaurant() {
         txtRestaurant.setText(PreferenceUtilsServer.getRestaurantName(getActivity()));
         txtAddress.setText(PreferenceUtilsServer.getRestaurantAddress(getActivity()));
     }
-
     public class getMenuFood extends AsyncTask<String,String,ArrayList<Menu>>{
 
     @Override
@@ -189,7 +140,6 @@ public class MenuFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<Menu> menus) {
             menuAdapter = new MenuAdapter(getActivity(), menus);
-            txtCountMenu.setText(menuAdapter.getItemCount() + "");
             recyc_detailfood.setAdapter(menuAdapter);
             menuAdapter.notifyDataSetChanged();
             progress.hideProgress();
@@ -257,7 +207,6 @@ public class MenuFragment extends Fragment {
                     image.compress(Bitmap.CompressFormat.JPEG,90,byteArrayOutputStream);
                     byteArray=byteArrayOutputStream.toByteArray();
                     encodedImage= Base64.encodeToString(byteArray,Base64.DEFAULT);
-                    updateRestauratant(encodedImage);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -265,6 +214,43 @@ public class MenuFragment extends Fragment {
         }else{
             Toast.makeText(getActivity(), "Lỗi", Toast.LENGTH_SHORT).show();
         }
+    }
+    private void openDialogAddMenu() {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.CustomDialogAnimation);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View add_menu = inflater.inflate(R.layout.dialog_add_menu, null);
+        alertDialog.setView(add_menu);
+        final AlertDialog dialog = alertDialog.create();
+        dialog.setCancelable(true);
+        dialog.show();
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, 900);
+        ImageView mClose = dialog.findViewById(R.id.txt_close);
+        EditText editCategory = dialog.findViewById(R.id.editCategory);
+        Button btn_select_image=dialog.findViewById(R.id.btnSelectImage);
+        Button btnAddMenu=dialog.findViewById(R.id.btnAđdMenu);
+        image_menu=dialog.findViewById(R.id.image_menu);
+        btn_select_image.setOnClickListener(v -> chooseImage());
+        btnAddMenu.setOnClickListener(view -> {
+            MenuData menuData=new MenuData();
+            Menu menu=new Menu();
+            menu.setmName(editCategory.getText().toString());
+            menu.setRestaurantId(PreferenceUtilsServer.getUserId(getContext()));
+            menu.setImage(encodedImage);
+            if(editCategory.getText().toString().equals("")){
+                Toast.makeText(getActivity(), "Vui lòng nhập thông tin", Toast.LENGTH_SHORT).show();
+            }else {
+                int success=menuData.insertMenuRes(menu);
+                if (success > 0) {
+                    Toast.makeText(getActivity(), "Đã thêm", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Không thêm được", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
+
+        mClose.setOnClickListener(view -> dialog.dismiss());
     }
     private void showUpdateDialog(final MenuItem item) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.CustomDialogAnimation);
@@ -283,11 +269,23 @@ public class MenuFragment extends Fragment {
         Button btn_select_image=dialog.findViewById(R.id.btnSelectImage);
         Button btnAddMenu=dialog.findViewById(R.id.btnAđdMenu);
         image_menu=dialog.findViewById(R.id.image_menu);
+        //getItem
+        Menu get_menu=menuAdapter.getItem(item.getOrder());
+        editCategory.setText(get_menu.getmName());
+        if(get_menu.getImage()!=null){
+            image_menu.setImageBitmap(Common.getBitmap(get_menu.getImage()));
+        }
+        //
+
         btnAddMenu.setText("Cập nhật");
         btnAddMenu.setOnClickListener(view -> {
             Menu menu=new Menu();
             menu.setmName(editCategory.getText().toString());
-            menu.setImage(encodedImage);
+            if(encodedImage!=null){
+                menu.setImage(encodedImage);
+            }else {
+                menu.setImage(get_menu.getImage());
+            }
             menu.setRestaurantId(PreferenceUtilsServer.getUserId(getContext()));
             menuAdapter.itemUpdate(item.getOrder(),menu);
             dialog.dismiss();
@@ -302,10 +300,10 @@ public class MenuFragment extends Fragment {
         super.onDestroy();
     }
 
-    private void updateRestauratant(String image) {
+    private void updateRestauratant() {
         restaurant=new Restaurant();
         restaurant.setmId(Common.currentRestaurant.getmId());
-        restaurant.setImage(image);
+        restaurant.setImage(encodedImage);
         progressBar.setVisibility(View.VISIBLE);
         Observable<Boolean> updateImage=Observable.just(restaurantData.updateImage(restaurant));
         compositeDisposable.add(

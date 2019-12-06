@@ -1,8 +1,11 @@
 package com.hcmunre.apporderfoodserver.commons;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.hcmunre.apporderfoodserver.R;
+import com.hcmunre.apporderfoodserver.models.Entity.FavoriteOnlyId;
 import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 import com.hcmunre.apporderfoodserver.models.Entity.Order;
 import com.hcmunre.apporderfoodserver.models.Entity.Restaurant;
@@ -23,8 +27,10 @@ import com.hcmunre.apporderfoodserver.views.activities.OrderDetailActivity;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Common {
     public static Restaurant currentRestaurant;
@@ -40,7 +46,9 @@ public class Common {
     public static final String TAG="ERROR";
     public static String FCM_API = "https://fcm.googleapis.com/fcm/send";
     public static String serverKey = "key=" + "AAAABxgzzk4:APA91bFOUq0T_vGnwemLQfJcU6akuV1gLQVJdL5mxyxV1m1bDeDbapGb8mWH0gKqSL2tSyuS_A7kTD3iWTfeFK0NhHNhcu8TY7Z7ClSu8LA2xJSJoDaYhbOge7MUF1J8V6FSRiUeDW8i";
+    public static final Pattern EMAIL_PATTERN = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     public static String contentType = "application/json";
+    public static ArrayList<FavoriteOnlyId> currentFavorite;
     public static boolean isConnectedToInternet(Context context) {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -117,5 +125,19 @@ public class Common {
             }
         };
         MySingleton.getInstance(context.getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
+    public static boolean checkFavorite(int id) {
+        boolean result=false;
+        for (FavoriteOnlyId item:currentFavorite){
+            if(item.getFoodId()==id){
+                result=true;
+            }
+        }
+        return result;
+    }
+    public static Bitmap getBitmap(String image){
+        byte[] decodeString = Base64.decode(image, Base64.DEFAULT);
+        Bitmap decodebitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+        return decodebitmap;
     }
 }

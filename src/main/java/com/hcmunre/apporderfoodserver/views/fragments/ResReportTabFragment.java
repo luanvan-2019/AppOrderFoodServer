@@ -149,7 +149,7 @@ public class ResReportTabFragment extends Fragment {
             PieDataSet dataSet = new PieDataSet(pieEntries, "Món ăn được đặt nhiều");
             PieData pieData = new PieData();
             pieData.setDataSet(dataSet);
-            pieData.setValueTextSize(14f);
+            pieData.setValueTextSize(15f);
             pieData.setValueFormatter(new PercentFormatter(pieChart));
             dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
             pieChart.setData(pieData);

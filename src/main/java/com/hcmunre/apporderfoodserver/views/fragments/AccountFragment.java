@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,6 +40,10 @@ public class AccountFragment extends Fragment {
     TextView btn_category;
     @BindView(R.id.txt_name_user)
     TextView txt_name_user;
+    @BindView(R.id.linear_shipper)
+    LinearLayout linear_shipper;
+    @BindView(R.id.linear_management_category)
+    LinearLayout linear_management_category;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,7 +55,16 @@ public class AccountFragment extends Fragment {
     }
 
     private void eventClick() {
-        btn_shipper.setOnClickListener(v -> {
+        txt_name_user.setText(PreferenceUtilsServer.getName(getActivity()));
+        String permission=PreferenceUtilsServer.getPermission(getActivity());
+        if(permission.equals("Nhân viên")){
+            linear_shipper.setVisibility(View.GONE);
+            linear_management_category.setVisibility(View.GONE);
+        }
+        if(permission.equals("Chủ cửa hàng")){
+            linear_management_category.setVisibility(View.GONE);
+        }
+        linear_shipper.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), ShipperActivity.class));
         });
         btn_category.setOnClickListener(new View.OnClickListener() {

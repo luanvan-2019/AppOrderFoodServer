@@ -5,10 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,15 +25,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aldoapps.autoformatedittext.AutoFormatEditText;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
+import com.hcmunre.apporderfoodserver.commons.Progress;
 import com.hcmunre.apporderfoodserver.models.Database.FoodData;
 import com.hcmunre.apporderfoodserver.models.Entity.Food;
 import com.hcmunre.apporderfoodserver.models.Entity.Menu;
@@ -49,6 +52,8 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import me.abhinay.input.CurrencyEditText;
+import me.abhinay.input.CurrencySymbols;
 
 public class ListFoodActivity extends AppCompatActivity {
     @BindView(R.id.recyc_listFood)
@@ -57,17 +62,20 @@ public class ListFoodActivity extends AppCompatActivity {
     FloatingActionButton mActionAddFood;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    EditText txtname_food,txtprice,txtdescription;
-    AutoFormatEditText txt_price;
-    Button btnSelectImage,btnAddFood;
+    EditText txtname_food, txtdescription;
+    CurrencyEditText txtprice;
+    Button btnSelectImage, btnAddFood;
     ImageView imageFood;
-    FoodData foodData=new FoodData();
+    FoodData foodData = new FoodData();
     Food food;
     byte[] byteArray;
     String encodedImage;
     FoodAdapter adapter;
+    SwitchCompat switch_status;
     private static final int RESULT_LOAD_IMAGE = 1;
-    CompositeDisposable compositeDisposable=new CompositeDisposable();
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    Menu menu;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,29 +98,29 @@ public class ListFoodActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RESULT_LOAD_IMAGE && resultCode==RESULT_OK && data!=null){
-            Bitmap bitmap=null;
-            Uri uri=data.getData();
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
+            Bitmap bitmap = null;
+            Uri uri = data.getData();
             InputStream imageStream;
             try {
-                imageStream=getContentResolver().openInputStream(uri);
-                bitmap= BitmapFactory.decodeStream(imageStream);
+                imageStream = getContentResolver().openInputStream(uri);
+                bitmap = BitmapFactory.decodeStream(imageStream);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            if(bitmap!=null){
+            if (bitmap != null) {
                 this.imageFood.setImageBitmap(bitmap);
                 try {
-                    Bitmap image=((BitmapDrawable)imageFood.getDrawable()).getBitmap();
-                    ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.JPEG,90,byteArrayOutputStream);
-                    byteArray=byteArrayOutputStream.toByteArray();
-                    encodedImage= Base64.encodeToString(byteArray,Base64.DEFAULT);
-                }catch (Exception e){
+                    Bitmap image = ((BitmapDrawable) imageFood.getDrawable()).getBitmap();
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
+                    byteArray = byteArrayOutputStream.toByteArray();
+                    encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        }else{
+        } else {
             Toast.makeText(this, "Đã hủy", Toast.LENGTH_SHORT).show();
         }
     }
@@ -128,36 +136,41 @@ public class ListFoodActivity extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         ImageView mClose = dialog.findViewById(R.id.txt_close);
-        txtname_food=dialog.findViewById(R.id.txtname_food);
-        txtprice=dialog.findViewById(R.id.txtprice);
-        txtdescription=dialog.findViewById(R.id.txtdescription);
-        imageFood=dialog.findViewById(R.id.imageFood);
-        btnSelectImage=dialog.findViewById(R.id.btnSelectImage);
-        btnAddFood=dialog.findViewById(R.id.btnAddFood);
+        txtname_food = dialog.findViewById(R.id.txtname_food);
+        txtprice = dialog.findViewById(R.id.txtprice);
+        txtdescription = dialog.findViewById(R.id.txtdescription);
+        imageFood = dialog.findViewById(R.id.imageFood);
+        switch_status = dialog.findViewById(R.id.switch_status);
+        btnSelectImage = dialog.findViewById(R.id.btnSelectImage);
+        btnAddFood = dialog.findViewById(R.id.btnAddFood);
+        txtprice.setCurrency(CurrencySymbols.NONE);
+        txtprice.setDelimiter(false);
+        txtprice.setSpacing(false);
+        txtprice.setDecimals(false);
+        txtprice.setSeparator(",");
         btnAddFood.setOnClickListener(view -> {
-        //
-        food=new Food();
-        Intent intent = getIntent();
-        Menu menu = (Menu) intent.getSerializableExtra(Common.KEY_MENU);
-        food.setName(txtname_food.getText().toString());
-        food.setImageFood(encodedImage);
-        food.setDescription(txtdescription.getText().toString());
-        food.setPrice(Float.parseFloat(txtprice.getText().toString()));
-        food.setMenuId(menu.getmId());
-        Observable<Integer> addFood=Observable.just(foodData.insertFood(food));
-        compositeDisposable.add(
-                addFood
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(integer -> {
-                            if(integer>0){
-                                Toast.makeText(ListFoodActivity.this, "Đã thêm ", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                            }else {
-                                Toast.makeText(ListFoodActivity.this, "Không thêm được", Toast.LENGTH_SHORT).show();
-                            }
-                        }, throwable -> Toast.makeText(ListFoodActivity.this, "Đã Hủy"+throwable.getMessage(), Toast.LENGTH_SHORT).show())
-        );
+            //
+            food = new Food();
+            Intent intent = getIntent();
+            Menu menu = (Menu) intent.getSerializableExtra(Common.KEY_MENU);
+            food.setName(txtname_food.getText().toString());
+            food.setImageFood(encodedImage);
+            food.setDescription(txtdescription.getText().toString());
+            food.setPrice(Integer.parseInt(txtprice.getText().toString().replaceAll("[^0-9]", "")));
+            food.setMenuId(menu.getmId());
+            if (switch_status.isChecked()) {
+                food.setStatusFood(1);
+            } else {
+                food.setStatusFood(0);
+            }
+            int success = foodData.insertFood(food);
+            if (success > 0) {
+                Toast.makeText(ListFoodActivity.this, "Đã thêm", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            } else {
+                Toast.makeText(ListFoodActivity.this, "Không thêm được", Toast.LENGTH_SHORT).show();
+            }
+
         });
         chooseImage();
         mClose.setOnClickListener(view -> dialog.dismiss());
@@ -165,34 +178,48 @@ public class ListFoodActivity extends AppCompatActivity {
 
     private void listFoodOfMenu() {
         Intent intent = getIntent();
-        Menu menu = (Menu) intent.getSerializableExtra(Common.KEY_MENU);
+        menu = (Menu) intent.getSerializableExtra(Common.KEY_MENU);
         toolbar.setTitle(menu.getmName());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        try {
-            Observable<ArrayList<Food>> listFoods=Observable.just(foodData.getFoodOfMenu(menu.getmId()));
-            compositeDisposable.add(
-                    listFoods
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(foods -> {
-                            adapter = new FoodAdapter(foods, ListFoodActivity.this);
-                            recyc_listFood.setAdapter(adapter);
-                    }, throwable -> {
-                        Toast.makeText(this, "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    })
-            );
-        } catch (SQLException e) {
-            Toast.makeText(this, "Lỗi "+e.getMessage(), Toast.LENGTH_SHORT).show();
+        new getListFood().execute();
+    }
+
+    public class getListFood extends AsyncTask<String, String, ArrayList<Food>> {
+        Progress progress = new Progress();
+
+        @Override
+        protected void onPreExecute() {
+            progress.showProgress(ListFoodActivity.this);
         }
 
+        @Override
+        protected void onPostExecute(ArrayList<Food> foods) {
+            if (foods != null) {
+                adapter = new FoodAdapter(foods, ListFoodActivity.this);
+                recyc_listFood.setAdapter(adapter);
+                progress.hideProgress();
+            }
 
+        }
+
+        @Override
+        protected ArrayList<Food> doInBackground(String... strings) {
+            ArrayList<Food> foods = null;
+            try {
+                foods = foodData.getFoodOfMenu(menu.getmId());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return foods;
+        }
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         if (item.getTitle().equals(Common.UPDATE)) {
+            Log.d("BBB", item.getMenuInfo() + "");
             showUpdateDialog(item);
         } else if (item.getTitle().equals(Common.DELETE)) {
             confirmDeleteDialog(item);
@@ -202,31 +229,61 @@ public class ListFoodActivity extends AppCompatActivity {
 
     private void showUpdateDialog(MenuItem item) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.CustomDialogAnimation);
-        alertDialog.setTitle("Cập nhật món ăn");
         LayoutInflater layoutInflater = this.getLayoutInflater();
         View add_food = layoutInflater.inflate(R.layout.dialog_add_food, null);
         alertDialog.setView(add_food);
         final AlertDialog dialog = alertDialog.create();
         dialog.setCancelable(true);
         dialog.show();
+        //findView
         ImageView txt_close = dialog.findViewById(R.id.txt_close);
-        txtname_food=dialog.findViewById(R.id.txtname_food);
-        txtprice=dialog.findViewById(R.id.txtprice);
-        txtdescription=dialog.findViewById(R.id.txtdescription);
-        imageFood=dialog.findViewById(R.id.imageFood);
-        btnSelectImage=dialog.findViewById(R.id.btnSelectImage);
-        btnAddFood=dialog.findViewById(R.id.btnAddFood);
+        txtname_food = dialog.findViewById(R.id.txtname_food);
+        txtprice = dialog.findViewById(R.id.txtprice);
+        switch_status = dialog.findViewById(R.id.switch_status);
+        txtdescription = dialog.findViewById(R.id.txtdescription);
+        imageFood = dialog.findViewById(R.id.imageFood);
+        txtprice.setCurrency(CurrencySymbols.NONE);
+        txtprice.setDelimiter(false);
+        txtprice.setSpacing(false);
+        txtprice.setDecimals(false);
+        txtprice.setSeparator(",");
+        //getItem from recyclerview food
+        Food get_food = adapter.getItem(item.getOrder());
+        txtname_food.setText(get_food.getName());
+        txtdescription.setText(get_food.getDescription());
+        txtprice.setText(get_food.getPrice()+"");
+        if (get_food.getStatusFood() == 1) {
+            switch_status.setChecked(true);
+        } else if (get_food.getStatusFood() == 0) {
+            switch_status.setChecked(false);
+        }
+        if (get_food.getImageFood()!=null){
+            imageFood.setImageBitmap(Common.getBitmap(get_food.getImageFood()));
+
+        }
+        //
+        btnSelectImage = dialog.findViewById(R.id.btnSelectImage);
+        btnAddFood = dialog.findViewById(R.id.btnAddFood);
         btnAddFood.setText("Cập nhật");
         btnAddFood.setOnClickListener(view -> {
-            Food food=new Food();
             Intent intent = getIntent();
             Menu menu = (Menu) intent.getSerializableExtra(Common.KEY_MENU);
+            Food food = new Food();
             food.setName(txtname_food.getText().toString());
-            food.setImageFood(encodedImage);
+            if(encodedImage!=null){
+                food.setImageFood(encodedImage);
+            }else {
+                food.setImageFood(get_food.getImageFood());
+            }
             food.setDescription(txtdescription.getText().toString());
-            food.setPrice(Float.parseFloat(txtprice.getText().toString()));
+            food.setPrice(Integer.parseInt(txtprice.getText().toString().replaceAll("[^0-9]", "")));
             food.setMenuId(menu.getmId());
-            adapter.updateFood(item.getOrder(),food);
+            if(switch_status.isChecked()){
+                food.setStatusFood(1);
+            }else {
+                food.setStatusFood(0);
+            }
+            adapter.updateFood(item.getOrder(), food);
             adapter.notifyItemChanged(item.getOrder());
             dialog.dismiss();
         });
@@ -251,7 +308,7 @@ public class ListFoodActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();
-        if(adapter!=null){
+        if (adapter != null) {
             adapter.onStop();
         }
         super.onDestroy();
@@ -259,21 +316,21 @@ public class ListFoodActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }
-    private void chooseImage(){
+
+    private void chooseImage() {
         btnSelectImage.setOnClickListener(view -> {
             //Mở gallery và chọn hình trong media
-            if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)
-                    && !Environment.getExternalStorageState().equals(Environment.MEDIA_CHECKING)){
-                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent,RESULT_LOAD_IMAGE);
-            }else{
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)
+                    && !Environment.getExternalStorageState().equals(Environment.MEDIA_CHECKING)) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, RESULT_LOAD_IMAGE);
+            } else {
                 Toast.makeText(ListFoodActivity.this, "Không tìm thấy media", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }

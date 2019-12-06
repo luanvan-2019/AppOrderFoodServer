@@ -65,7 +65,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
     //format editext to money
-    implementation 'com.aldoapps:autoformatedittext:0.9.3'
+    implementation 'me.abhinay.input:currency-edittext:1.1'
     //
     implementation 'com.google.android.libraries.places:places:2.0.0'
     //

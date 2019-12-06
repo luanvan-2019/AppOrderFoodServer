@@ -18,23 +18,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8a3d117-a4ad-406f-8977-57552c3ca149" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountShipperFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/app_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_account_shipper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_abhinay_input_currency_edittext_1_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/FavoriteOnlyId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ManagementRestaurant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ManagementRestaurantActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/custom_switch.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_chat.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/switch_track.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/activity_management_restaurant.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/google-services.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/OrderData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/OrderData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/ShipperData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/ShipperData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ShipperOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ShipperOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeShipperActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeShipperActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/FoodData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/FoodData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/MenuData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/MenuData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/RestaurantData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/RestaurantData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/SignInData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/SignInData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/RestaurantOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/RestaurantOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseMessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseMessagingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeShipperActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ListFoodActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ListFoodActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/LoginAppActivity.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperMapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperMapActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderDetailShipperActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/PreferenceUtilsServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/PreferenceUtilsServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/PreferenceUtilsShipper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperMapActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperOrderActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignInActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignInActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignInShipperActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignUpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/FoodAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/FoodAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/MenuAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/MenuAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderAdatper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderAdatper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderReceivedAdatper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderReceivedAdatper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ReportAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ReportAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/RestaurantAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/RestaurantAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ShipperOrderAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountShipperFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/HomeShipperFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/MenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/MenuFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ResReportTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ResReportTabFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-anydpi/ic_phone_call.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-anydpi/ic_phone_call.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_order_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_order_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_splashscreen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_splashscreen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_user_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_user_info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/dialog_add_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/dialog_add_food.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_allfood.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_allfood.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_menu_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_menu_food.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_food.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_order_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_order_history.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,68 +140,47 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeShipperActivity.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignUpActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="40" column="72" selection-start-line="40" selection-start-column="72" selection-end-line="40" selection-end-column="72" />
+            <state relative-caret-position="80">
+              <caret line="193" column="41" selection-start-line="193" selection-start-column="41" selection-end-line="193" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/RestaurantAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="43" />
-              <folding>
-                <element signature="method#isConnectedToInternet#0;class#Common#0" />
-                <element signature="method#convertStringToStatusFood#0;class#Common#0" />
-                <element signature="method#sendNotification#0;class#Common#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/HomeShipperFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="46" column="58" selection-start-line="43" selection-start-column="4" selection-end-line="46" selection-end-column="58" />
-              <folding>
-                <element signature="e#2797#2859#0" />
-              </folding>
+            <state relative-caret-position="174">
+              <caret line="81" column="84" selection-start-line="81" selection-start-column="84" selection-end-line="81" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/OrderData.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/RestaurantData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="45" column="5" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
+            <state relative-caret-position="15">
+              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
               <folding>
-                <element signature="method#getAllOrder#0;class#OrderData#0" />
-                <element signature="method#getMaxOrder#0;class#OrderData#0" />
-                <element signature="method#getOrderDetail#0;class#OrderData#0" />
-                <element signature="method#updateOrder#0;class#OrderData#0" />
-                <element signature="method#shippingOrder#0;class#OrderData#0" />
+                <element signature="method#checkExistRestaurantOwner#0;class#RestaurantData#0" />
+                <element signature="method#updateRestaurant#0;class#RestaurantData#0" />
+                <element signature="method#updateImage#0;class#RestaurantData#0" />
+                <element signature="method#getCategory#0;class#RestaurantData#0" />
+                <element signature="method#insertCategory#0;class#RestaurantData#0" />
+                <element signature="method#deleteCategory#0;class#RestaurantData#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/ShipperData.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ManagementRestaurantActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="67" column="98" selection-start-line="67" selection-start-column="98" selection-end-line="67" selection-end-column="98" />
+            <state relative-caret-position="245">
+              <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
               <folding>
-                <element signature="method#createNewShipper#0;class#ShipperData#0" />
-                <element signature="method#getAllShipper#0;class#ShipperData#0" />
-                <element signature="method#getOrderForShipper#0;class#ShipperData#0" />
-                <element signature="method#getMaxOrderForShipper#0;class#ShipperData#0" />
-                <element signature="method#getInforShipper#0;class#ShipperData#0" />
-                <element signature="method#updateStatusShipping#0;class#ShipperData#0" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,63 +215,64 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/PdfPrintDocumentAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/RestaurantOwner.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_shipper_order.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/dialog_add_menu.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/MenuData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/HomeFragment.java" />
-        <option value="$PROJECT_DIR$/../build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MySingleton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/LoginAppActivity.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_menu_food.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/NewOrderFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseInstanceIDService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseMessagingServiceShipper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseMessagingService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/BarChartActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_account.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_new_order.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/activity_order_history.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderHistoryAdatper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/CategoryActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderHistoryActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ShipperOrderAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/CancelFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/res/drawable/round_button_light.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/drawable-xhdpi/round_button_light_date.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/MenuAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_menu.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderAdatper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/FoodData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/MenuFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_allfood.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ResReportTabFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ReportFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/TabReportAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/activity_order_detail.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Order.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/OrderData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ShipperOrder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/ShipperData.java" />
-        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperMapActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderDetailActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/AccountShipperFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeShipperActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountShipperFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_account_shipper.xml" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_splashscreen.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_user_info.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ResReportTabFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_allfood.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_home.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable-mdpi/ic_chat.xml" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_order_detail.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderDetailActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderReceivedAdatper.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/item_order_history.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderAdatper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/MenuData.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/layout_switch.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/switch_track.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/FavoriteOnlyId.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/item_food.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/custom_switch.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/dialog_add_food.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/FoodAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/MenuAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Food.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/FoodData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ReportAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ListFoodActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/MenuFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_menu_food.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_sign_in.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_sign_up.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseMessagingService.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_management_restaurant.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ManagementRestaurant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/RestaurantOwner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/PreferenceUtilsServer.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_account.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignInActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/SignInData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/CommonClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignUpActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable-anydpi/ic_phone_call.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/item_order.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ManagementRestaurantActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/RestaurantAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/RestaurantData.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="403" />
-    <option name="width" value="834" />
+    <option name="x" value="848" />
+    <option name="y" value="22" />
+    <option name="width" value="672" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -256,6 +281,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AppOrderFoodServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AppOrderFoodServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
@@ -302,14 +338,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="apporderfoodserver" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="apporderfoodserver" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -323,41 +351,7 @@
             <path>
               <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="apporderfoodserver" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="apporderfoodserver" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
@@ -365,26 +359,11 @@
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
-            <path>
-              <item name="AppOrderFoodServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="AppOrderFoodServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppOrderFoodServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -395,15 +374,19 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AppOrderFoodShipper/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AppOrderFoodClient/app" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.hcmunre.apporderfoodserver.views.activities" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-mdpi" />
+      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-xhdpi" />
+      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-hdpi" />
+      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\assets\fonts" />
+      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-anydpi" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.hcmunre.apporderfoodserver.views.activities" />
@@ -415,18 +398,14 @@
       <recent name="com.hcmunre.apporderfoodserver" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hcmunre.apporderfoodserver.commons" />
+      <recent name="com.hcmunre.apporderfoodserver.models.Entity" />
       <recent name="com.hcmunre.apporderfoodserver.views.adapters" />
       <recent name="com.hcmunre.apporderfoodserver.notifications" />
       <recent name="com.hcmunre.apporderfoodserver.directionHelper" />
-      <recent name="com.hcmunre.apporderfoodserver.views.activities" />
-      <recent name="com.hcmunre.apporderfoodserver.views.fragments" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-xhdpi" />
-      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-hdpi" />
-      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\assets\fonts" />
-      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable-anydpi" />
-      <recent name="D:\ProjectAndroid\AppOrderFoodServer\app\src\main\res\drawable" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hcmunre.apporderfoodserver.views.activities" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -571,7 +550,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" />
@@ -581,25 +559,25 @@
       <window_info id="Designer" order="5" />
       <window_info id="Resources Explorer" order="6" weight="0.32980332" />
       <window_info id="Capture Tool" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.23298033" />
+      <window_info content_ui="combo" id="Project" order="8" visible="true" weight="0.21709532" />
       <window_info anchor="bottom" id="Version Control" order="0" weight="0.32993197" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4977307" weight="0.7823129" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4977307" weight="0.8758503" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32993197" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.5170068" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50226927" side_tool="true" weight="0.7585034" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.34013605" />
-      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" weight="0.32993197" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.39285713" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" weight="0.32993197" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.71258503" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.86904764" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.83843535" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.5017007" />
-      <window_info anchor="right" id="Device File Explorer" order="0" sideWeight="0.5017007" side_tool="true" weight="0.39561272" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" sideWeight="0.49659863" weight="0.22692889" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" x="575" y="142" width="767" height="234" id="Attributes" order="5" weight="0.32980332" />
-      <window_info anchor="right" id="Preview" order="6" sideWeight="0.49829933" weight="0.31316188" />
-      <window_info anchor="right" id="Assistant" order="7" weight="0.32980332" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Gradle" order="1" sideWeight="0.49659863" weight="0.27382752" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" x="575" y="142" width="767" height="234" id="Attributes" order="4" weight="0.32980332" />
+      <window_info anchor="right" id="Preview" order="5" sideWeight="0.49829933" weight="0.2624811" />
+      <window_info anchor="right" id="Assistant" order="6" weight="0.49546143" />
+      <window_info anchor="right" id="Device File Explorer" order="7" sideWeight="0.5017007" side_tool="true" weight="0.39561272" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -646,259 +624,337 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_order_history.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderAdatper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="e#944#1135#0" />
-          </folding>
+        <state relative-caret-position="1020">
+          <caret line="80" column="99" selection-start-line="80" selection-start-column="99" selection-end-line="80" selection-end-column="99" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_order_history.xml">
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderHistoryAdatper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
-          <caret line="63" column="86" selection-start-line="63" selection-start-column="86" selection-end-line="63" selection-end-column="86" />
+        <state relative-caret-position="2060">
+          <caret line="103" column="68" selection-start-line="103" selection-start-column="50" selection-end-line="103" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/CategoryActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderReceivedAdatper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+        <state relative-caret-position="600">
+          <caret line="55" column="90" selection-start-line="55" selection-start-column="90" selection-end-line="55" selection-end-column="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderHistoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="102" column="9" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_shipper_order.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="107" column="47" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="47" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_order_detail.xml">
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/CancelFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="132" column="43" selection-start-line="132" selection-start-column="43" selection-end-line="132" selection-end-column="43" />
+        <state relative-caret-position="3060">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/NewOrderFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/round_button_light.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable-xhdpi/round_button_light_date.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable-xxhdpi/background_button_cart.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/dialog_add_menu.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Menu.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/MenuData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="261">
+          <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_listfood.xml">
       <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/FoodData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="31" column="53" lean-forward="true" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
-          <folding>
-            <element signature="method#getFoodOfMenu#0;class#FoodData#0" />
-            <element signature="method#insertFood#0;class#FoodData#0" />
-            <element signature="method#deleteFood#0;class#FoodData#0" />
-            <element signature="method#updateFood#0;class#FoodData#0" />
-            <element signature="e#3329#3852#0" />
-            <element signature="method#updateStatus#0;class#FoodData#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_allfood.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="142" column="35" selection-start-line="142" selection-start-column="35" selection-end-line="142" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/TabOrderFragmentAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Progress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/TabReportAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/layout_switch.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/switch_track.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state relative-caret-position="200">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ReportFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/FavoriteOnlyId.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/custom_switch.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state relative-caret-position="120">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/ResReportTabFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_food.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="129" column="13" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
+        <state relative-caret-position="356">
+          <caret line="71" column="33" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="71" selection-end-column="33" />
           <folding>
-            <element signature="class#loadChartReport#0;class#ResReportTabFragment#0" />
+            <element signature="e#560#922#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/dialog_add_food.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="61" column="38" lean-forward="true" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/FoodAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="79" column="82" selection-start-line="79" selection-start-column="82" selection-end-line="79" selection-end-column="82" />
+          <folding>
+            <element signature="e#4568#4569#0" expanded="true" />
+            <element signature="e#4616#4617#0" expanded="true" />
+            <element signature="e#4633#4634#0" expanded="true" />
+            <element signature="method#removeFood#0;class#FoodAdapter#0" />
+            <element signature="method#updateFood#0;class#FoodAdapter#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/FoodData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2120">
+          <caret line="174" column="50" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="50" />
+          <folding>
+            <element signature="method#getMenuResFood#0;class#FoodData#0" />
+            <element signature="method#updateStatus#0;class#FoodData#0" />
+            <element signature="method#reportHotFood#0;class#FoodData#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Food.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding>
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1869#1870#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ReportAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="43" column="15" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ListFoodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="158" column="100" selection-start-line="158" selection-start-column="100" selection-end-line="158" selection-end-column="100" />
+          <folding>
+            <element signature="method#init#0;class#ListFoodActivity#0" />
+            <element signature="method#onActivityResult#0;class#ListFoodActivity#0" />
+            <element signature="method#listFoodOfMenu#0;class#ListFoodActivity#0" />
+            <element signature="class#getListFood#0;class#ListFoodActivity#0" />
+            <element signature="method#onContextItemSelected#0;class#ListFoodActivity#0" />
+            <element signature="method#confirmDeleteDialog#0;class#ListFoodActivity#0" />
+            <element signature="method#onDestroy#0;class#ListFoodActivity#0" />
+            <element signature="method#onOptionsItemSelected#0;class#ListFoodActivity#0" />
+            <element signature="method#chooseImage#0;class#ListFoodActivity#0" />
+            <marker date="1575345998794" expanded="true" signature="2357:2387" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/MenuFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="193" column="47" selection-start-line="193" selection-start-column="47" selection-end-line="193" selection-end-column="47" />
+        <state relative-caret-position="425">
+          <caret line="102" column="55" selection-start-line="102" selection-start-column="55" selection-end-line="102" selection-end-column="55" />
+          <folding>
+            <element signature="method#getInforRestaurant#0;class#MenuFragment#0" />
+            <element signature="method#onContextItemSelected#0;class#MenuFragment#0" />
+            <element signature="method#confirmDeleteDialog#0;class#MenuFragment#0" />
+            <element signature="method#onOptionsItemSelected#0;class#MenuFragment#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_menu_food.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="90" column="39" lean-forward="true" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/oppo-rmx1811-161331ec/data/data/com.hcmunre.apporderfoodserver/shared_prefs/SaveLocal.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/UserInfoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-243">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/MenuAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="263">
+          <caret line="96" column="39" selection-start-line="96" selection-start-column="39" selection-end-line="96" selection-end-column="39" />
+          <folding>
+            <element signature="e#3338#3339#0" expanded="true" />
+            <element signature="e#3375#3376#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/MenuData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_sign_in_shipper.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/FoodAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_sign_in.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="71" column="41" lean-forward="true" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderAdatper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ShipperAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/ShipperOrderAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+        <state relative-caret-position="165">
+          <caret line="90" column="48" selection-start-line="90" selection-start-column="48" selection-end-line="90" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        <state relative-caret-position="175">
+          <caret line="72" column="67" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="67" />
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ShipperOrder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/notifications/MyFirebaseMessagingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        <state relative-caret-position="240">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/OrderData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="17" column="101" selection-start-line="17" selection-start-column="101" selection-end-line="17" selection-end-column="101" />
           <folding>
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
+            <element signature="method#getAllOrder#0;class#OrderData#0" />
+            <element signature="method#getMaxOrder#0;class#OrderData#0" />
+            <element signature="method#getOrderDetail#0;class#OrderData#0" />
+            <element signature="method#shippingOrder#0;class#OrderData#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_order_detail.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/NewOrderFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="136" column="34" lean-forward="true" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/RestaurantOwner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="111" column="35" lean-forward="true" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
+          <folding>
+            <element signature="e#2443#2444#0" expanded="true" />
+            <element signature="e#2495#2496#0" expanded="true" />
+            <element signature="e#2539#2540#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_management_restaurant.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/PreferenceUtilsServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="79" column="37" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_account.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
-          <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
+          <caret line="116" column="55" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="55" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+          <folding>
+            <element signature="class#2209:2403" />
+            <element signature="class#2451:2645" />
+            <element signature="class#2700:2898" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/CommonClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_sign_up.xml">
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/Interfaces/LoadMore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="480">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/HashPass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="17" column="68" lean-forward="true" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_order_detail.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/OrderDetailAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable-anydpi/ic_phone_call.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+        <state relative-caret-position="80">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_order.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="103" column="62" lean-forward="true" selection-start-line="103" selection-start-column="62" selection-end-line="103" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/OrderDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="210" column="5" lean-forward="true" selection-start-line="210" selection-start-column="5" selection-end-line="210" selection-end-column="5" />
+        <state relative-caret-position="214">
+          <caret line="161" column="53" lean-forward="true" selection-start-line="161" selection-start-column="53" selection-end-line="161" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8254#8255#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
+            <element signature="method#onDestroy#0;class#OrderDetailActivity#0" />
+            <element signature="class#getOrderDetail#0;class#OrderDetailActivity#0" />
             <element signature="method#printOrder#0;class#OrderDetailActivity#0" />
             <element signature="method#creatPDFFile#0;class#OrderDetailActivity#0" />
             <element signature="method#printPDF#0;class#OrderDetailActivity#0" />
@@ -906,181 +962,100 @@
             <element signature="method#addLineSpace#0;class#OrderDetailActivity#0" />
             <element signature="method#addNewItem#0;class#OrderDetailActivity#0" />
             <element signature="method#addNewItemLeftWithRightText#0;class#OrderDetailActivity#0" />
+            <element signature="class#deliveryForShipper#0;class#OrderDetailActivity#0" />
+            <element signature="class#shipper#0;class#OrderDetailActivity#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/ManagementRestaurant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="28" column="120" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="120" />
+        <state relative-caret-position="200">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding>
+            <element signature="e#2105#2106#0" expanded="true" />
+            <element signature="e#2138#2139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="193" column="41" selection-start-line="193" selection-start-column="41" selection-end-line="193" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1088">
+          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/SignInData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/SignInActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="48" column="156" selection-start-line="48" selection-start-column="156" selection-end-line="48" selection-end-column="156" />
+          <folding>
+            <element signature="method#isConnectedToInternet#0;class#Common#0" />
+            <element signature="method#convertStringToStatusFood#0;class#Common#0" />
+            <element signature="method#sendNotification#0;class#Common#0" />
+            <element signature="method#checkFavorite#0;class#Common#0" />
+            <element signature="method#getBitmap#0;class#Common#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ManagementRestaurantActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperOrderActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/adapters/RestaurantAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="73" column="96" selection-start-line="73" selection-start-column="96" selection-end-line="73" selection-end-column="96" />
+        <state relative-caret-position="174">
+          <caret line="81" column="84" selection-start-line="81" selection-start-column="84" selection-end-line="81" selection-end-column="84" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/ShipperMapActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/RestaurantData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="15">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding>
-            <element signature="method#sendRequest#0;class#ShipperMapActivity#0" />
-            <element signature="method#contactCustomer#0;class#ShipperMapActivity#0" />
-            <element signature="method#onMapReady#0;class#ShipperMapActivity#0" />
-            <element signature="method#onDirectionFinderStart#0;class#ShipperMapActivity#0" />
-            <element signature="method#onDirectionFinderSuccess#0;class#ShipperMapActivity#0" />
-            <element signature="method#onGPS#0;class#ShipperMapActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/AccountShipperFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_account.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="90" column="43" lean-forward="true" selection-end-line="171" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/activities/HomeShipperActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="40" column="72" selection-start-line="40" selection-start-column="72" selection-end-line="40" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/ShipperData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="67" column="98" selection-start-line="67" selection-start-column="98" selection-end-line="67" selection-end-column="98" />
-          <folding>
-            <element signature="method#createNewShipper#0;class#ShipperData#0" />
-            <element signature="method#getAllShipper#0;class#ShipperData#0" />
-            <element signature="method#getOrderForShipper#0;class#ShipperData#0" />
-            <element signature="method#getMaxOrderForShipper#0;class#ShipperData#0" />
-            <element signature="method#getInforShipper#0;class#ShipperData#0" />
-            <element signature="method#updateStatusShipping#0;class#ShipperData#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_home_shipper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="27" column="41" lean-forward="true" selection-end-line="35" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/HomeShipperFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="46" column="58" selection-start-line="43" selection-start-column="4" selection-end-line="46" selection-end-column="58" />
-          <folding>
-            <element signature="e#2797#2859#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Entity/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="95" column="29" selection-start-line="95" selection-start-column="29" selection-end-line="95" selection-end-column="29" />
-          <folding>
-            <element signature="e#2022#2023#0" expanded="true" />
-            <element signature="e#2065#2066#0" expanded="true" />
-            <element signature="e#2103#2104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_account_shipper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="83" lean-forward="true" selection-end-line="101" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="787">
-          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountShipperFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="34" column="27" selection-start-line="28" selection-start-column="4" selection-end-line="34" selection-end-column="27" />
-          <folding>
-            <element signature="method#signOut#0;class#AccountShipperFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/views/fragments/AccountFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-          <folding>
-            <element signature="method#eventClick#0;class#AccountFragment#0" />
-            <element signature="method#signOut#0;class#AccountFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/commons/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="43" />
-          <folding>
-            <element signature="method#isConnectedToInternet#0;class#Common#0" />
-            <element signature="method#convertStringToStatusFood#0;class#Common#0" />
-            <element signature="method#sendNotification#0;class#Common#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hcmunre/apporderfoodserver/models/Database/OrderData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="45" column="5" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="45" selection-end-column="5" />
-          <folding>
-            <element signature="method#getAllOrder#0;class#OrderData#0" />
-            <element signature="method#getMaxOrder#0;class#OrderData#0" />
-            <element signature="method#getOrderDetail#0;class#OrderData#0" />
-            <element signature="method#updateOrder#0;class#OrderData#0" />
-            <element signature="method#shippingOrder#0;class#OrderData#0" />
+            <element signature="method#checkExistRestaurantOwner#0;class#RestaurantData#0" />
+            <element signature="method#updateRestaurant#0;class#RestaurantData#0" />
+            <element signature="method#updateImage#0;class#RestaurantData#0" />
+            <element signature="method#getCategory#0;class#RestaurantData#0" />
+            <element signature="method#insertCategory#0;class#RestaurantData#0" />
+            <element signature="method#deleteCategory#0;class#RestaurantData#0" />
           </folding>
         </state>
       </provider>

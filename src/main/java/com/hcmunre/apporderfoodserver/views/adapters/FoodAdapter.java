@@ -5,12 +5,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,12 +20,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.Database.FoodData;
+import com.hcmunre.apporderfoodserver.models.Entity.FavoriteOnlyId;
 import com.hcmunre.apporderfoodserver.models.Entity.Food;
+import com.hcmunre.apporderfoodserver.models.Entity.Menu;
 import com.hcmunre.apporderfoodserver.models.Entity.Status;
 
 import java.text.NumberFormat;
@@ -42,7 +47,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     private ArrayList<Food> arrayList;
     private Context mContext;
-    private ArrayAdapter adapter;
     CompositeDisposable compositeDisposable;
     FoodData foodData = new FoodData();
 
@@ -54,9 +58,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         this.mContext = mContext;
         compositeDisposable = new CompositeDisposable();
     }
-    public void onStop(){
+
+    public void onStop() {
         compositeDisposable.clear();
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,50 +73,50 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Food food = arrayList.get(position);
-        byte[] decodeString = Base64.decode(food.getImageFood(), Base64.DEFAULT);
-        Bitmap decodebitmap = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
         holder.itemView.setTag(position);
         holder.txtitem_name.setText(food.getName());
-        holder.txtitem_price.setText(holder.currencyVN.format(food.getPrice()));
-        holder.img_food.setImageBitmap(decodebitmap);
+        holder.txtitem_price.setText(new StringBuilder(holder.currencyVN.format(food.getPrice())).append("đ"));
+        if(food.getImageFood()!=null){
+            holder.img_food.setImageBitmap(Common.getBitmap(food.getImageFood()));
+        }
         holder.txtdescription.setText(food.getDescription());
-        //spinner
-        List<Status> spinnerList = new ArrayList<>();
-        spinnerList.add(new Status(0, "Hết món"));
-        spinnerList.add(new Status(1, "Đang bán"));
-        adapter = new ArrayAdapter(mContext, android.R.layout.simple_spinner_item, spinnerList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        holder.spinner_status_food.setAdapter(adapter);
-        holder.spinner_status_food.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        Log.d("BBB", "" + food.getStatusFood());
+        if (food.getStatusFood() == 1) {
+            holder.switch_status.setChecked(true);
+        } else if (food.getStatusFood() == 0) {
+            holder.switch_status.setChecked(false);
+        }
+        //
+        holder.switch_status.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Food food1 = new Food();
-                food1.setId(food.getId());
-                food1.setStatusFood(Common.convertStringToStatusFood(holder.spinner_status_food.getSelectedItem().toString()));
-                Observable<Boolean> updateOrder = Observable.just(foodData.updateStatus(food1));
-                compositeDisposable.add(
-                        updateOrder
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(aBoolean -> {
-                                    if (aBoolean==true){
-//                                        holder.spinner_status_food.setSelection(Common.convertStatusFoodToIndex(food1.getStatusFood()));
-                                        Toast.makeText(mContext, "Đã cập nhật trạng thái", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else
-                                        Toast.makeText(mContext, "Không thể cập nhật", Toast.LENGTH_SHORT).show();
-                                }, throwable -> {
-                                    Toast.makeText(mContext, "Lỗi " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                })
-                );
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (holder.switch_status.isChecked()) {
+                    Food food1 = new Food();
+                    food1.setId(food.getId());
+                    food1.setStatusFood(1);
+                    boolean success = foodData.updateStatus(food1);
+                    if (success == true) {
+                        Toast.makeText(mContext, "Đã cập nhật trạng thái", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(mContext, "Không thể cập nhật", Toast.LENGTH_SHORT).show();
+                } else {
+                    Food food1 = new Food();
+                    food1.setId(food.getId());
+                    food1.setStatusFood(0);
+                    boolean success = foodData.updateStatus(food1);
+                    if (success == true) {
+                        Toast.makeText(mContext, "Đã cập nhật trạng thái", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(mContext, "Không thể cập nhật", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
 
+    }
+
+    public Food getItem(int position) {
+        return arrayList.get(position);
     }
 
     @Override
@@ -127,10 +133,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         TextView txtdescription;
         @BindView(R.id.img_food)
         ImageView img_food;
-        @BindView(R.id.spinner_status_food)
-        AppCompatSpinner spinner_status_food;
+        @BindView(R.id.switch_status)
+        SwitchCompat switch_status;
         Locale localeVN = new Locale("vi", "VN");
-        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        NumberFormat currencyVN = NumberFormat.getInstance(localeVN);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -146,10 +152,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         }
     }
 
-    //    public void addFood(int position) {
-//        arrayList.add(position);
-//        notifyDataSetChanged();
-//    }
     public void removeFood(int position) {
         FoodData foodData = new FoodData();
         Food food = new Food();

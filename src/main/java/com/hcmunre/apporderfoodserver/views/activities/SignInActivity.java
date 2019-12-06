@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -124,9 +125,24 @@ public class SignInActivity extends AppCompatActivity {
                 PreferenceUtilsServer.saveRestaurantAddress(Common.currentRestaurantOwner.getRestaurantAddress(),SignInActivity.this);
                 PreferenceUtilsServer.savePhone(Common.currentRestaurantOwner.getPhone(), SignInActivity.this);
                 PreferenceUtilsServer.saveAddress(Common.currentRestaurantOwner.getAddress(), SignInActivity.this);
-                Intent intent=new Intent(SignInActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                String permission=restaurantOwner.getPermission();
+                PreferenceUtilsServer.savePermission(permission,SignInActivity.this);
+                Log.d("BBB",permission);
+                if(permission.equals("Chủ cửa hàng")){
+                    Intent intent=new Intent(SignInActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else if(permission.equals("Nhân viên")){
+                    Intent intent=new Intent(SignInActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else if(permission.equals("Admin")){
+                    Intent intent=new Intent(SignInActivity.this, ManagementRestaurantActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+
             } else {
                 Toast.makeText(mContext, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
             }

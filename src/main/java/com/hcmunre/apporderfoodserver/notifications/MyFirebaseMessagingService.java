@@ -20,7 +20,6 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.hcmunre.apporderfoodserver.R;
 import com.hcmunre.apporderfoodserver.views.activities.HomeActivity;
-import com.hcmunre.apporderfoodserver.views.activities.HomeShipperActivity;
 
 import java.util.Random;
 
@@ -30,21 +29,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        String title=remoteMessage.getData().get("title");
-        Intent intent = null;
-        if(title.equals("Giao hàng")){
-            intent=new Intent(this, HomeShipperActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }else if(title.equals("App Food")){
-            intent= new Intent(this, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }
+        Intent intent= new Intent(this, HomeActivity.class);
+        Log.d("BBB",remoteMessage.getData()+"data");
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationID = new Random().nextInt(3000);
-
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             setupChannels(notificationManager);
         }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this , 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
@@ -60,7 +52,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setSound(notificationSoundUri)
                 .setContentIntent(pendingIntent);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             notificationBuilder.setColor(getResources().getColor(R.color.colorPrimaryDark));
         }

@@ -1,6 +1,8 @@
 package com.hcmunre.apporderfoodserver.views.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -58,25 +60,42 @@ public class OrderAdatper extends RecyclerView.Adapter<OrderAdatper.ViewHolder> 
         Order order=orders.get(position);
         holder.txt_orderId.setText(order.getOrderId()+"");
         holder.txt_quantity.setText(new StringBuilder(order.getNumberOfItem()+"").append(" phần x "));
-        holder.txt_total_price.setText(String.valueOf(holder.numberFormat.format(order.getTotalPrice())));
+        holder.txt_total_price.setText(new StringBuilder(holder.numberFormat.format(order.getTotalPrice())).append("đ"));
         holder.txt_name_customer.setText(order.getOrderName());
         holder.btn_confirm.setOnClickListener(v -> {
             Common.currentOrder=orders.get(position);
             new updateOrder(1);
             itemRemoved(position);
             context.startActivity(new Intent(context, OrderDetailActivity.class));
-            Common.showToast(context,"Đã nhận");
         });
         holder.btn_cancel.setOnClickListener(view -> {
             Common.currentOrder=orders.get(position);
-            new updateOrder(5);
-            itemRemoved(position);
-            Common.showToast(context,"Đã hủy");
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext())
+                    .setTitle("Hủy đơn")
+                    .setMessage("Bạn có muốn hủy đơn không ?")
+                    .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            new updateOrder(5);
+                            itemRemoved(position);
+                            holder.btn_cancel.setBackgroundResource(R.drawable.round_button_light);
+                            Common.showToast(context,"Đã hủy");
+                        }
+                    })
+                    .setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            builder.show();
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Common.showToast(context,"Đã click");
+
+                Common.currentOrder=orders.get(position);
+                context.startActivity(new Intent(context, OrderDetailActivity.class));
             }
         });
     }
@@ -112,7 +131,7 @@ public class OrderAdatper extends RecyclerView.Adapter<OrderAdatper.ViewHolder> 
         @BindView(R.id.btn_cancel)
         TextView btn_cancel;
         Locale locale=new Locale("vi","VN");
-        NumberFormat numberFormat=NumberFormat.getCurrencyInstance(locale);
+        NumberFormat numberFormat=NumberFormat.getInstance(locale);
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
@@ -133,7 +152,7 @@ public class OrderAdatper extends RecyclerView.Adapter<OrderAdatper.ViewHolder> 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             if(aBoolean==true){
-                Log.d(Common.TAG,"Đã thực hiện");
+                Common.showToast(context,"Đã nhận");
             }
             super.onPostExecute(aBoolean);
         }

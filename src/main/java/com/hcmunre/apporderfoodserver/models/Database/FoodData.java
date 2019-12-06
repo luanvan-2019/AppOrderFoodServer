@@ -2,6 +2,7 @@ package com.hcmunre.apporderfoodserver.models.Database;
 
 import android.util.Log;
 
+import com.hcmunre.apporderfoodserver.models.Entity.FavoriteOnlyId;
 import com.hcmunre.apporderfoodserver.models.Entity.Food;
 import com.hcmunre.apporderfoodserver.models.Entity.HotFood;
 import com.hcmunre.apporderfoodserver.models.Entity.Menu;
@@ -52,7 +53,8 @@ public class FoodData {
             food.setName(rs.getString("Name"));
             food.setImageFood(rs.getString("Image"));
             food.setDescription(rs.getString("Description"));
-            food.setPrice(rs.getFloat("Price"));
+            food.setPrice(rs.getInt("Price"));
+            food.setStatusFood(rs.getInt("Status"));
             listFoodOfMenu.add(food);
         }
         con.close();
@@ -67,7 +69,7 @@ public class FoodData {
             pst.setString(1, food.getName());
             pst.setString(2, food.getImageFood());
             pst.setString(3, food.getDescription());
-            pst.setFloat(4, food.getPrice());
+            pst.setInt(4, food.getPrice());
             pst.setInt(5, food.getMenuId());
             res = pst.executeUpdate();
             if(res>0){
@@ -99,10 +101,15 @@ public class FoodData {
     }
     public boolean updateFood(Food food){
         try {
-            String sql="Exec Sp_UpdateFood '"+food.getId()+"','"+food.getName().toString()+"','"+food.getImageFood()+"'," +
-                    "'"+food.getDescription().toString()+"','"+food.getPrice()+"','"+food.getMenuId()+"'";
+            String sql="Exec Sp_UpdateFood (?,?,?,?,?,?)";
             con=dataConnetion.connectionData();
-            pst=con.prepareStatement(sql);
+            PreparedStatement pst=con.prepareCall(sql);
+            pst.setInt(1,food.getId());
+            pst.setString(2,food.getName());
+            pst.setString(3,food.getImageFood());
+            pst.setString(4,food.getDescription());
+            pst.setInt(5,food.getPrice());
+            pst.setInt(6,food.getMenuId());
             if(pst.executeUpdate()>0){
                 con.close();
                 return true;
@@ -118,9 +125,11 @@ public class FoodData {
     public boolean updateStatus(Food food){
         boolean success=false;
         try {
-            String sql="Exec Sp_UpdateStatus '"+food.getId()+"','"+food.getStatusFood()+"'";
+            String sql="Exec Sp_UpdateStatus (?,?)";
             con=dataConnetion.connectionData();
-            PreparedStatement pst=con.prepareStatement(sql);
+            PreparedStatement pst=con.prepareCall(sql);
+            pst.setInt(1,food.getId());
+            pst.setInt(2,food.getStatusFood());
             if(pst.executeUpdate()>0){
                 con.close();
                 success=true;
@@ -163,7 +172,7 @@ public class FoodData {
                 Food food=new Food();
                 food.setId(rs.getInt("FoodId"));
                 food.setName(rs.getString("Name"));
-                food.setPrice(rs.getFloat("Price"));
+                food.setPrice(rs.getInt("Price"));
                 food.setQuantity(rs.getInt("Quantity"));
                 foods.add(food);
             }
@@ -172,6 +181,4 @@ public class FoodData {
         }
         return foods;
     }
-
-
 }

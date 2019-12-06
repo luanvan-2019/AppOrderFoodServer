@@ -1,16 +1,12 @@
 package com.hcmunre.apporderfoodserver.views.activities;
 
-import android.Manifest;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,79 +14,59 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.textfield.TextInputEditText;
 import com.hcmunre.apporderfoodserver.R;
+import com.hcmunre.apporderfoodserver.commons.Common;
 import com.hcmunre.apporderfoodserver.models.Database.RestaurantData;
+import com.hcmunre.apporderfoodserver.models.Entity.ManagementRestaurant;
 import com.hcmunre.apporderfoodserver.models.Entity.Restaurant;
 import com.hcmunre.apporderfoodserver.models.Entity.RestaurantOwner;
 
-import java.io.IOException;
 import java.sql.Time;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
-public class SignUpActivity extends AppCompatActivity implements OnMapReadyCallback,
-        LocationListener, GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+public class SignUpActivity extends AppCompatActivity {
 
     @BindView(R.id.edit_name_restaurant)
-    EditText edit_name_restaurant;
+    TextInputEditText edit_name_restaurant;
     @BindView(R.id.edit_phone)
-    EditText edit_phone;
+    TextInputEditText edit_phone;
     @BindView(R.id.edit_name_user)
-    EditText edit_name_user;
+    TextInputEditText edit_name_user;
     @BindView(R.id.edit_email)
-    EditText edit_email;
+    TextInputEditText edit_email;
     @BindView(R.id.edit_pass)
-    EditText edit_pass;
+    TextInputEditText edit_pass;
     @BindView(R.id.edit_opening)
-    EditText edit_opening;
+    TextInputEditText edit_opening;
     @BindView(R.id.edit_closing)
-    EditText edit_closing;
+    TextInputEditText edit_closing;
     @BindView(R.id.edit_address)
-    EditText edit_address;
+    TextInputEditText edit_address;
     @BindView(R.id.btn_sign_up)
     Button btn_sign_up;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private static final int PLACE_PICKER_REQUEST = 1;
-    private GoogleMap mMap;
-    Location mLastLocation;
-    Marker mCurrLocationMarker;
-    GoogleApiClient mGoogleApiClient;
-    LocationRequest mLocationRequest;
     RestaurantData restaurantData = new RestaurantData();
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     Restaurant restaurant;
     RestaurantOwner restaurantOwner;
+    ManagementRestaurant managementRestaurant;
     double mLat, mLng;
 
     @Override
@@ -98,10 +74,18 @@ public class SignUpActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         init();
+        eventClick();
     }
 
     private void init() {
         ButterKnife.bind(this);
+        toolbar.setTitle("Đăng kí nhà hàng");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+    private void eventClick(){
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -123,15 +107,10 @@ public class SignUpActivity extends AppCompatActivity implements OnMapReadyCallb
         edit_address.setOnClickListener(view -> {
             setAddress();
         });
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
         btn_sign_up.setOnClickListener(v -> {
             createNewRestaurant();
         });
-
     }
-
     private void setAddress() {
         List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
         Intent intent = new Autocomplete.IntentBuilder(
@@ -162,150 +141,70 @@ public class SignUpActivity extends AppCompatActivity implements OnMapReadyCallb
     }
 
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
-            }
-        } else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-
-    }
-
-    protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API).build();
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-        mLastLocation = location;
-        if (mCurrLocationMarker != null) {
-            mCurrLocationMarker.remove();
-        }
-        //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-
-        //stop location updates
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
-    }
-
-    public void searchLocation() {
-        String location = edit_address.getText().toString();
-        List<Address> addressList = null;
-        if (location != null || !location.equals("")) {
-            Geocoder geocoder = new Geocoder(this);
-            try {
-                addressList = geocoder.getFromLocationName(location, 1);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-            Toast.makeText(getApplicationContext(), address.getLatitude() + " " + address.getLongitude(), Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Rỗng", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
     protected void onDestroy() {
         compositeDisposable.clear();
         super.onDestroy();
     }
 
     private void createNewRestaurant() {
-        restaurant = new Restaurant();
-        restaurant.setmName(edit_name_restaurant.getText().toString());
-        restaurant.setPhone(edit_phone.getText().toString());
-        Time opening = Time.valueOf(edit_opening.getText().toString());
-        Time closing = Time.valueOf(edit_closing.getText().toString());
-        restaurant.setOpening(opening);
-        restaurant.setClosing(closing);
-        restaurant.setAddress(edit_address.getText().toString());
-        restaurant.setLat(mLat);
-        restaurant.setLng(mLng);
-        restaurantOwner = new RestaurantOwner();
-        restaurantOwner.setName(edit_name_user.getText().toString());
-        restaurantOwner.setEmail(edit_email.getText().toString());
-        restaurantOwner.setPassword(edit_pass.getText().toString());
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Vui lòng chờ ...");
-        progressDialog.show();
-        Observable<Boolean> createNewRes = Observable.
-                just(restaurantData.createNewRestaurant(restaurant, restaurantOwner));
-        compositeDisposable.add(
-                createNewRes
-                        .delay(2, TimeUnit.SECONDS)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(aBoolean -> {
-                                    compositeDisposable.add(
-                                            restaurantData.checkExistRestaurantOwner(restaurantOwner.getEmail())
-                                                    .subscribeOn(Schedulers.io())
-                                                    .observeOn(AndroidSchedulers.mainThread())
-                                                    .subscribe(aBoolean1 -> {
-                                                        if (aBoolean == true) {
-                                                            progressDialog.dismiss();
-                                                            Toast.makeText(this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                                        } else {
-                                                            progressDialog.dismiss();
-                                                            Toast.makeText(this, "Không thể tạo tài khoản", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    }, throwable -> {
-                                                        progressDialog.dismiss();
-                                                        Toast.makeText(this, "Lỗi hệ thống " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                                    })
-                                    );
-                                }
-                        )
-        );
+        String name_restaurant=edit_name_restaurant.getText().toString().trim();
+        String phone=edit_phone.getText().toString().trim();
+        String address=edit_address.getText().toString().trim();
+        String name_user=edit_name_user.getText().toString().trim();
+        String email=edit_email.getText().toString().trim();
+        String password=edit_pass.getText().toString().trim();
+        if(TextUtils.isEmpty(name_restaurant)){
+            edit_name_restaurant.setError("Nhâp tên cửa hàng");
+        }else if(TextUtils.isEmpty(phone)){
+            edit_phone.setError("Nhập số điện thoại");
+        }else if(TextUtils.isEmpty(name_user)){
+            edit_name_user.setError("Nhập tên người dùng");
+        }else if(TextUtils.isEmpty(address)){
+            edit_address.setError("Nhập địa chỉ");
+        }else if(TextUtils.isEmpty(email)){
+            edit_email.setError("Nhập email");
+        }else if(TextUtils.isEmpty(password)){
+            edit_pass.setError("Nhập mật khẩu");
+        }else if (!Common.EMAIL_PATTERN.matcher(email).matches()) {
+            edit_email.setError("Vui lòng nhập đúng email");
+        } else if (password.length() <= 8) {
+            edit_pass.setError("Mật khẩu ít nhất 8 kí tự");
+        }else
+        {
+            managementRestaurant = new ManagementRestaurant();
+            managementRestaurant.setRestaurantName(edit_name_restaurant.getText().toString());
+            managementRestaurant.setPhone(edit_phone.getText().toString());
+            Time opening = Time.valueOf(edit_opening.getText().toString());
+            Time closing = Time.valueOf(edit_closing.getText().toString());
+            managementRestaurant.setOpening(opening);
+            managementRestaurant.setClosing(closing);
+            managementRestaurant.setAddress(edit_address.getText().toString());
+            managementRestaurant.setUsername(edit_name_user.getText().toString());
+            managementRestaurant.setEmail(edit_email.getText().toString());
+            managementRestaurant.setPassword(edit_pass.getText().toString());
+            managementRestaurant.setStatus(0);
+            managementRestaurant.setLat(mLat);
+            managementRestaurant.setLng(mLng);
+            managementRestaurant.setPermission("Chủ cửa hàng");
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Vui lòng chờ ...");
+            progressDialog.show();
+            boolean success=restaurantData.insertNewRegisterRestaurant(managementRestaurant);
+            if (success == true) {
+                progressDialog.dismiss();
+                Toast.makeText(this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                progressDialog.dismiss();
+                Toast.makeText(this, "Không thể tạo tài khoản", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

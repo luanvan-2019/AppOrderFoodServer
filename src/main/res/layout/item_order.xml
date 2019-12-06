@@ -48,20 +48,21 @@
                                 android:textSize="15sp"
                                 android:textColor="#262628"
                                 android:text="#"/>
-                            <custom_font.MyTextView
-                                android:id="@+id/txtid_order"
+                            <TextView
+                                android:id="@+id/txt_restaurnantId"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="15sp"
+                                android:textSize="16sp"
                                 android:textColor="#262628"
                                 android:text="123456"/>
                         </LinearLayout>
-                        <custom_font.MyTextView
-                            android:id="@+id/edit_name"
+                        <TextView
+                            android:fontFamily="@font/robotoregular"
+                            android:id="@+id/txt_name_restaurant"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
-                            android:textColor="#9b9b9b"
+                            android:textColor="#3671a9"
                             android:text="Nguyễn Hữu Trọng"
                             android:layout_marginTop="4dp"/>
 
@@ -70,14 +71,37 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <custom_font.MyTextView
-                                android:id="@+id/txt_price"
+                            <TextView
+                                android:id="@+id/txt_address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:textSize="15sp"
-                                android:textColor="#3671a9"
+                                android:textColor="#000000"
                                 android:text="82.000đ"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:id="@+id/txt_username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textSize="15sp"
+                                android:textColor="#000000"
+                                android:text="82.000đ"/>
+                            <ImageView
+                                android:id="@+id/image_call"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_phone_call"
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"/>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -92,7 +116,7 @@
                     android:layout_marginBottom="18dp">
 
                     <Button
-                        android:id="@+id/itemprice"
+                        android:id="@+id/btn_comfirm"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -100,18 +124,7 @@
                         android:textSize="15sp"
                         android:textColor="@color/colorPrimary"
                         android:textAllCaps="false"
-                        android:text="Nhận"/>
-                    <Button
-                        android:gravity="center"
-                        android:id="@+id/txtkm"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="6dp"
-                        android:textSize="15sp"
-                        android:textAllCaps="false"
-                        android:textColor="#d22532"
-                        android:text="Hủy"/>
+                        android:text="Xác nhận cửa hàng mới"/>
 
                 </LinearLayout>
             </LinearLayout>

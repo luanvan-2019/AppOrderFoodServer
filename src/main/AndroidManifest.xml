@@ -24,27 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".views.activities.OrderHistoryActivity"></activity>
-        <activity android:name=".views.activities.OrderDetailShipperActivity" />
+        <activity android:name=".views.activities.ManagementRestaurantActivity"></activity>
+        <activity android:name=".views.activities.OrderHistoryActivity" />
         <activity android:name=".views.activities.UserInfoActivity" />
         <activity android:name=".views.activities.CategoryActivity" />
         <activity android:name=".views.activities.BarChartActivity" />
-        <activity android:name=".views.activities.ShipperMapActivity" />
-        <activity android:name=".views.activities.SplashScreenActivity" />
-        <activity android:name=".views.activities.ShipperOrderActivity" />
-        <activity android:name=".views.activities.HomeShipperActivity" />
         <activity android:name=".views.activities.ShipperActivity" />
-        <activity android:name=".views.activities.SignInShipperActivity" />
-        <activity
-            android:name=".views.activities.LoginAppActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -70,6 +55,16 @@
         <activity android:name=".views.activities.SignUpActivity" />
         <activity android:name=".views.activities.SignInActivity" />
         <activity android:name=".views.activities.ListFoodActivity" />
+        <activity
+            android:name=".views.activities.SplashScreenActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service android:name=".notifications.MyFirebaseInstanceIDService">
             <intent-filter>
